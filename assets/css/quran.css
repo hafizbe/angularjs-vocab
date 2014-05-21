@@ -1,0 +1,67 @@
+@import url(http://fonts.googleapis.com/earlyaccess/lateef.css);
+.home_block
+{
+	border-right: 1px solid #e5e5e5;
+}
+
+.home_block .home_block_text
+{
+	
+}
+
+.home_block .home_block_text .number-red
+{
+	color: #d15b47;
+	font-size: 5.3em
+}
+
+.home_block .home_block_text .number-green
+{
+	color: #87b87f;
+	font-size: 5.3em
+}
+
+.home_block .home_block_text .number-yellow
+{
+	color: #ffb752;
+	font-size: 5.3em
+}
+
+#tab_lst_surahs #col_num_sourate
+{
+	width: 4%;
+}
+
+#tab_lst_surahs #col_nom_sourate
+{
+	width: 10%;
+}
+
+#tab_lst_surahs #col_nb_mots
+{
+	width: 16%;
+}
+
+.progress-column-surah
+{
+	margin-bottom: 0px;
+}
+
+
+#tab_lst_surahs{
+
+}
+
+#tab_lst_surahs tr:hover{
+	cursor: pointer;
+	background-color: blue;
+}
+
+
+.ar
+{
+	font-family: 'Lateef';
+	font-size: 3em;
+
+	/*line-height: 175px;*/
+}
