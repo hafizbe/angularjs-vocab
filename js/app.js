@@ -14,5 +14,10 @@ app.config(['$routeProvider',
             when('/user/suras', {
                 templateUrl: 'templates/user/suras.html',
                 controller: 'sura_c'
+            }).
+            when('/user/suras/:sura_id/cards', {
+                templateUrl: 'templates/user/cards.html',
+                controller: 'user_cards_c'
             })
+
     }]);
