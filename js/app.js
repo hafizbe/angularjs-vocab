@@ -11,8 +11,8 @@ var app = angular.module('nomAppli', ['ngRoute']);
 app.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
-            when('/test', {
-                templateUrl: 'partials/test.html',
+            when('/user/suras', {
+                templateUrl: 'templates/user/suras.html',
                 controller: 'sura_c'
             })
     }]);
