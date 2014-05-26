@@ -4,9 +4,9 @@ app.controller('sura_c', ['$scope','userService', function($scope, userService) 
 
 	userService.getSurasReport().then(function(promise){
 		$scope.suras = promise.data;
-	})
+	});
 
-    isLoaded = function(){
+    $scope.isLoaded = function(){
         if($scope.suras.length >0)
             return true;
         else

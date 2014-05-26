@@ -6,7 +6,8 @@
 
 <div class="row">
     <div class="col-xs-12">
-        <table id="tab_lst_surahs" class="table table-striped table-bordered table-hover">
+        <p ng-hide="isLoaded()"><i class="ace-icon fa fa-spinner fa-spin orange bigger-125"></i>  Chargement ...</p>
+        <table ng-show="isLoaded()" id="tab_lst_surahs" class="table table-striped table-bordered table-hover" >
             <thead>
             <tr>
                 <th class="center" id="col_num_sourate">Numéro</th>
@@ -23,7 +24,7 @@
             </tr>
             </thead>
 
-            <tbody ng-controller="sura_c">
+            <tbody>
             <tr ng-repeat="sura in suras">
                 <td class="center">{{sura.sura_id}}</td>
                 <td class="center"><a href="#user/suras/{{sura.sura_id}}/cards">{{sura.name_phonetic}}</a></td>

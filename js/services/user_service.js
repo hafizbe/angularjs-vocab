@@ -28,6 +28,7 @@ app.service("userService", ["$http",
 		}
 
 		this.getSurasReport = function(){
+
             var promise = $http({method:'GET', url:'http://vocab-api.herokuapp.com/api/v1/users/suras?' +
                 'token=da34a57ce3e0582f56459a23bb8fe3d7&sura_id=1'})
                 .success(function (response, status, headers, config) {
