@@ -1,6 +1,6 @@
 <div class="col-sm-8">
 
-										<h3 class="header smaller lighter red">Sourate Al-Fatiha</h3>
+										<h3 class="header smaller lighter red">Sura {{stats_cards.sura_name_phonetic}}</h3>
 										<p>
 											<button class="btn btn-danger btn-block">Commencer l'apprentissage !</button>
 										</p>
@@ -22,7 +22,7 @@
 											<tr ng-repeat="card in stats_cards.cards">
 												<td class="center ar ">{{card.word}}</td>
 												<td class="center">{{card.english_m}}</td>
-												<td class="center"><i class="ace-icon fa fa-circle green"></i></td>
+												<td class="center"><i ng-class="detectClassPoint(card)" class="ace-icon fa fa-circle"></i></td>
 												<td class="center">14/05/2014 14:05</td>		
 							
 											</tr>
@@ -56,9 +56,9 @@
                                                 </li>
                                             </ul>
                                             <hr>
-                                            <div class="easy-pie-chart percentage indicateur_compteur_suras" data-percent="100" data-color="#87B87F" style="height: 75px; width: 75px; line-height: 74px; color: rgb(135, 184, 127);">
-                                                <span class="percent">100</span>%
-                                                <canvas height="75" width="75"></canvas></div>
+                                            <div class="progress progress-striped active" data-percent="{{stats_cards.percentage_sura}}%">
+                                                <div class="progress-bar progress-bar-success" style="width: {{stats_cards.percentage_sura}}%;"></div>
+                                            </div>
                                         </div>
 
 

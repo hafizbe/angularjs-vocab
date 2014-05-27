@@ -10,14 +10,26 @@ app.controller('user_cards_c', ['$scope','userService','$routeParams',
 	});
 
     $scope.isLoaded = function(){
-        console.log("Je passe par là) ..")
         if($scope.stats_cards== false)
             return false;
         else
             return true;
     }
 
-        view.loadChart = function(){
+    $scope.detectClassPoint = function(card){
+        switch(card.response){
+            case 1:
+                return "red"
+            case 2:
+                return "orange";
+            case 3:
+                return "green";
+            default :
+                return "";
+        }
+    }
+
+    view.loadChart = function(){
         $('.easy-pie-chart').each(function(){
             $(this).easyPieChart({
                 barColor: $(this).css('color'),//maybe take bar color from text color
