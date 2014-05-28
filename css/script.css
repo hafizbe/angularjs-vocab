@@ -3,3 +3,23 @@
     margin-right: auto;
     display: block;
 }
+
+.fader.ng-hide-add {
+    opacity: 1.0;
+    display: block !important;
+    transition: opacity 0.7s;
+}
+
+.fader.ng-hide-add-active {
+    opacity: 0;
+}
+
+.fader.ng-hide-remove {
+    opacity: 0;
+    display: block !important;
+    transition: opacity 0.7s;
+}
+
+.fader.ng-hide-remove-active {
+    opacity: 1.0;
+}

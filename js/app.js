@@ -1,4 +1,4 @@
-var app = angular.module('nomAppli', ['ngRoute']);
+var app = angular.module('nomAppli', ['ngRoute','ngAnimate']);
 
 /*app.config(['$httpProvider', function ($httpProvider) {
   //Reset headers to avoid OPTIONS request (aka preflight)
@@ -18,6 +18,10 @@ app.config(['$routeProvider',
             when('/user/suras/:sura_id/cards', {
                 templateUrl: 'templates/user/cards.html',
                 controller: 'user_cards_c'
+            }).
+            when('/user/learning/:card_id', {
+                templateUrl: 'templates/user/learning.html',
+                controller: 'learning_c'
             })
 
     }]);

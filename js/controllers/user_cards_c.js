@@ -6,11 +6,18 @@ app.controller('user_cards_c', ['$scope','userService','$routeParams',
 
 	userService.getAllCardsBySuraId($routeParams.sura_id).then(function(promise){
 		$scope.stats_cards = promise.data;
-        view.loadChart();
+        //view.loadChart();
 	});
 
     $scope.isLoaded = function(){
         if($scope.stats_cards== false)
+            return false;
+        else
+            return true;
+    }
+
+    $scope.datePresent = function(card){
+        if(card.date_response == null)
             return false;
         else
             return true;
@@ -29,7 +36,7 @@ app.controller('user_cards_c', ['$scope','userService','$routeParams',
         }
     }
 
-    view.loadChart = function(){
+    /*view.loadChart = function(){
         $('.easy-pie-chart').each(function(){
             $(this).easyPieChart({
                 barColor: $(this).css('color'),//maybe take bar color from text color
@@ -41,7 +48,7 @@ app.controller('user_cards_c', ['$scope','userService','$routeParams',
                 size:100
             });
         });
-    }
+    }*/
 
 
 
