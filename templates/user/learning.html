@@ -17,15 +17,15 @@
    <ul class="wizard-steps">
       <li data-target="#step1" ng-class="detectActive(1)">
          <span ng-click="switchToStep(1)" class="step">1</span>
-         <span class="title">French <i class="fa fa-long-arrow-right"></i> English</span>
+         <span class="title">Arabic <i class="fa fa-long-arrow-right"></i> English</span>
       </li>
       <li data-target="#step2" ng-class="detectActive(2)">
          <span ng-click="switchToStep(2)" class="step">2</span>
-         <span class="title">English <i class="fa fa-long-arrow-right"></i> French</span>
+         <span class="title">Arabic <i class="fa fa-long-arrow-left"></i> English</span>
       </li>
       <li data-target="#step3" ng-class="detectActive(3)">
          <span ng-click="switchToStep(3)" class="step">3</span>
-         <span class="title">French <i class="fa fa-long-arrow-right"></i> English</span>
+         <span class="title">Arabic <i class="fa fa-long-arrow-right"></i> English</span>
       </li>
       <li data-target="#step4" ng-class="detectActive(4)">
          <span ng-click="switchToStep(4)" class="step">4</span>
@@ -43,12 +43,12 @@
             <div class="widget-header widget-header-flat widget-header-small">
                 <h5 class="widget-title">
                   <i class="ace-icon fa fa-signal"></i>
-                  Word in French
+                  Word in Arabic
                 </h5>
             </div>
             <div class="widget-body">
               <div class="widget-main ">
-                <p class="card-word-arabic">Test</p>
+                <p class="card-word-arabic ar-big">اَلرَّحْمَانُ</p>
               </div>
               
             </div>
@@ -64,8 +64,8 @@
             </div>
             <div class="widget-body">
               <div class="widget-main ">
-                <p><button ng-click="aRepondu(1)" ng-hide="steps_selected[0]" class="btn btn-danger btn-block">Voir la réponse</button></p>
-                <p ng-show="steps_selected[0]" class="card-word-english fader">Test</p>
+                <p ng-hide="steps_selected[0]"><button ng-click="aRepondu(1)"  class="btn btn-danger btn-block">Voir la réponse</button></p>
+                <p ng-show="steps_selected[0]" class="card-word-english fader">the Most Gracious</p>
               </div>
               
             </div>
@@ -75,57 +75,19 @@
    </div>
    <div ng-class="detectActive(2)" class="step-pane" id="step2">
         <div class="center">
-
-        <div class="col-sm-6">
-          <div class="widget-box box-cards">
-            <div class="widget-header widget-header-flat widget-header-small">
-                <h5 class="widget-title">
-                  <i class="ace-icon fa fa-signal"></i>
-                  Word in English
-                </h5>
-            </div>
-            <div class="widget-body">
-              <div class="widget-main ">
-                <p><button ng-click="aRepondu(2)" ng-hide="steps_selected[1]" class="btn btn-danger btn-block ">Voir la réponse</button></p>
-                <p ng-hide="!steps_selected[1]" class="card-word-english fader">Test2</p>
-              </div>
-              
-            </div>
-          </div>
-          
-        </div>
-        <div class="col-sm-6">
-          <div class="widget-box box-cards">
-            <div class="widget-header widget-header-flat widget-header-small">
-                <h5 class="widget-title">
-                  <i class="ace-icon fa fa-signal"></i>
-                  Word in French
-                </h5>
-            </div>
-            <div class="widget-body">
-              <div class="widget-main ">
-                <p class="card-word-arabic">Test</p>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-      </div>
       
-   </div>
-   <div ng-class="detectActive(3)" class="step-pane" id="step3">
-      <div class="center">
         <div class="col-sm-6">
           <div class="widget-box box-cards">
             <div class="widget-header widget-header-flat widget-header-small">
                 <h5 class="widget-title">
                   <i class="ace-icon fa fa-signal"></i>
-                  Word in French
+                  Word in Arabic
                 </h5>
             </div>
             <div class="widget-body">
               <div class="widget-main ">
-                <p class="card-word-arabic">Test</p>
+                <p ng-hide="steps_selected[1]"><button ng-click="aRepondu(2)"  class="btn btn-danger btn-block">Voir la réponse</button></p>
+                <p ng-show="steps_selected[1]" class="card-word-arabic ar-big fader">اَلرَّحْمَانُ</p>
               </div>
               
             </div>
@@ -141,8 +103,45 @@
             </div>
             <div class="widget-body">
               <div class="widget-main ">
-                <p><button ng-click="aRepondu(3)" ng-hide="steps_selected[2]" class="btn btn-danger btn-block">Voir la réponse</button></p>
-                <p ng-show="steps_selected[2]" class="card-word-english fader">Test</p>
+                <p class="card-word-english fader">the Most Gracious</p>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      
+        </div>
+      </div>
+   <div ng-class="detectActive(3)" class="step-pane" id="step3">
+      <div class="center">
+        <div class="col-sm-6">
+          <div class="widget-box box-cards">
+            <div class="widget-header widget-header-flat widget-header-small">
+                <h5 class="widget-title">
+                  <i class="ace-icon fa fa-signal"></i>
+                  Word in Arabic
+                </h5>
+            </div>
+            <div class="widget-body">
+              <div class="widget-main ">
+                <p class="card-word-arabic ar-big">اَلرَّحْمَانُ</p>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+           <div class="widget-box box-cards">
+            <div class="widget-header widget-header-flat widget-header-small">
+                <h5 class="widget-title">
+                  <i class="ace-icon fa fa-signal"></i>
+                  Word in English
+                </h5>
+            </div>
+            <div class="widget-body">
+              <div class="widget-main ">
+                <p ng-hide="steps_selected[2]"><button ng-click="aRepondu(3)"  class="btn btn-danger btn-block">Voir la réponse</button></p>
+                <p ng-show="steps_selected[2]" class="card-word-english fader">the Most Gracious</p>
               </div>
               
             </div>

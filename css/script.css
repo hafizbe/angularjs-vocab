@@ -35,3 +35,11 @@
 .box-cards{
   height: 150px;
 }
+
+.ar-big
+{
+  font-family: 'Lateef';
+  font-size: 3.7em;
+
+  /*line-height: 175px;*/
+}
