@@ -23,3 +23,15 @@
 .fader.ng-hide-remove-active {
     opacity: 1.0;
 }
+
+.card-word-english{
+  font-size: 2.8em;
+}
+
+.card-word-arabic{
+  font-size: 2.8em;
+}
+
+.box-cards{
+  height: 150px;
+}
