@@ -27,9 +27,11 @@
                                                     <p ng-show="datePresent(card)">
                                                         {{card.date_response}}
                                                     </p>
-                                                    <p ng-hide="datePresent(card)">
-                                                        <button class="btn btn-block btn-success btn-primary">L'apprendre maintenant</button>
-                                                    </p>
+
+                                                    <form ng-hide="datePresent(card)"  type="GET" action="{{'#user/learning/'+card.id}}">
+                                                        <input type="submit" value="L'apprendre maintenant" class="btn btn-block btn-success btn-primary" />
+                                                    </form>
+
                                                 </td>
 							
 											</tr>

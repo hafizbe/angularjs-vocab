@@ -1,4 +1,4 @@
-app.controller('learning_c', ['$scope', function($scope) {
+app.controller('learning_c', ['$scope','cardService','$routeParams', function($scope, cardService, $routeParams) {
 
     $scope.disableBtnBack = true;
     $scope.disableBtnNext = false;
@@ -6,10 +6,25 @@ app.controller('learning_c', ['$scope', function($scope) {
     $scope.steps_selected = [false,false,false,false];
     $scope.response = false;
 
+    $scope.word_arabic = null;
+    $scope.word_traducted = null;
+
+    cardService.getCard($routeParams.card_id).then(function(promise){
+        $scope.word_arabic = promise.data.word;
+        $scope.word_traducted  = promise.data.english_m;
+        //view.loadChart();
+    });
+
+
+
     $scope.aRepondu = function(step){
 
         // On passe par ce tableau car cela permet 
         $scope.steps_selected[step-1] = true;
+
+        // On test si c'est différent de 3 afin de ne pas sauter l'étape pour afficher l'étape en front
+        if(step != 3)
+            $scope.nextStep();
         $scope.response = true;
     }
 
