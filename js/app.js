@@ -19,9 +19,12 @@ app.config(['$routeProvider',
                 templateUrl: 'templates/user/cards.html',
                 controller: 'user_cards_c'
             }).
-            when('/user/learning/:card_id', {
-                templateUrl: 'templates/user/learning.html',
-                controller: 'learning_c'
+            when('/user/learning/card/:card_id', {
+                templateUrl: 'templates/user/learning_card.html',
+                controller: 'learning_card_c'
+            }).when('/user/learning/sura/:sura_id' , {
+                template: ' ',
+                controller: "learning_sura_c"
             })
 
     }]);

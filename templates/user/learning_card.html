@@ -1,7 +1,7 @@
 <div class="page-header">
     <h1>Learning phase</h1>
 </div>
-<h3 class="header smaller lighter green"><i class="fa fa-arrow-circle-o-right fa-3"></i> Chapter Name</h3>
+<h3 class="header smaller lighter green"><i class="fa fa-arrow-circle-o-right fa-3"></i> Sourate : {{sura_name}}</h3>
 <div class="alert alert-block alert-success">
                 <button type="button" class="close" data-dismiss="alert">
                   <i class="ace-icon fa fa-times"></i>
@@ -156,7 +156,7 @@
     </p>
     <div class="col-sm-3">
       <p>
-                    <button class="btn btn-success btn-block">Trop facile !</button>
+                    <button class="btn btn-success btn-block">Facile</button>
                   </p>
     </div>
     <div class="col-sm-3">
@@ -171,7 +171,7 @@
     </div>
     <div class="col-sm-3">
       <p>
-                    <button class="btn btn-primary btn-block">Je veux recommencer</button>
+                    <button class="btn btn-primary btn-block" ng-click="restartLearning()">Je veux recommencer</button>
                   </p>
     </div>
     </div>
@@ -185,7 +185,7 @@
    <i class="ace-icon fa fa-arrow-left"></i>
    Prev
    </button>-->
-   <button class="btn btn-success btn-next" ng-disabled="disableBtnNext" ng-click="nextStep()" ng-show="response" data-last="Finish">
+   <button class="btn btn-success btn-next" ng-disabled="disableBtnNext" ng-click="nextStep()" ng-show="step3_show" data-last="Finish">
    Next
    <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
    </button>

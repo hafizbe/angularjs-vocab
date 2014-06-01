@@ -14,6 +14,19 @@ app.service("userService", ["$http",
 			return promise;
 		}
 
+        this.getCardsToWorkBySuraId = function(sura_id){
+            var promise = $http({method:'GET', url:'http://vocab-api.herokuapp.com/api/v1/users/cards_to_work/' +
+                sura_id+'?token=da34a57ce3e0582f56459a23bb8fe3d7'})
+                .success(function (response, status, headers, config) {
+                    return response;
+                })
+                .error(function (data, status, headers, config) {
+                    return {"status": false};
+                });
+
+            return promise;
+        };
+
 		this.getAllCardsBySuraId = function(sura_id){
 			var promise = $http({method:'GET', url:'http://vocab-api.herokuapp.com/api/v1/users/'+
 				'cards_by_sura?sura_id='+sura_id+'&token=da34a57ce3e0582f56459a23bb8fe3d7'})

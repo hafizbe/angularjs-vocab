@@ -1,9 +1,9 @@
 <div class="col-sm-8">
 
 										<h3 class="header smaller lighter red">Sura {{stats_cards.sura_name_phonetic}}</h3>
-										<p>
+										<form type="GET" action="#user/learning/sura/1">
 											<button class="btn btn-danger btn-block">Commencer l'apprentissage !</button>
-										</p>
+                                        </form>
 										<hr>
 										<h3 class="header smaller lighter ">Cartes de la sourate</h3>
 
@@ -28,7 +28,7 @@
                                                         {{card.date_response}}
                                                     </p>
 
-                                                    <form ng-hide="datePresent(card)"  type="GET" action="{{'#user/learning/'+card.id}}">
+                                                    <form ng-hide="datePresent(card)"  type="GET" action="{{'#/user/learning/card/'+card.id}}">
                                                         <input type="submit" value="L'apprendre maintenant" class="btn btn-block btn-success btn-primary" />
                                                     </form>
 
@@ -47,13 +47,13 @@
                                             <hr>
                                             <ul class="list-unstyled spaced2">
                                                 <li>
-                                                    <span class="green"><strong>{{stats_cards.point3}}</strong></span> cartes dans votre mémoire à <strong>long terme</strong>
+                                                    <span class="green"><strong>{{stats_cards.point3}}</strong></span> cartes <strong>connus</strong>
                                                 </li>
                                                 <li>
-                                                    <span class="orange"><strong>{{stats_cards.point2}}</strong></span> cartes dans votre mémoire à <strong>moyen terme</strong>
+                                                    <span class="orange"><strong>{{stats_cards.point2}}</strong></span> cartes en<strong>cours d'apprentissage</strong>
                                                 </li>
                                                 <li>
-                                                    <span class="red"><strong>{{stats_cards.point1}}</strong></span> cartes dans votre mémoire à <strong>court terme</strong>
+                                                    <span class="red"><strong>{{stats_cards.point1}}</strong></span> cartes à <strong>revoir</strong>
                                                 </li>
                                                 <li>
                                                     <span class="black"><strong>{{stats_cards.nb_cards_unknown}}</strong></span> cartes restante à <strong>apprendre</strong>

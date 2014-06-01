@@ -1,30 +1,42 @@
-app.controller('learning_c', ['$scope','cardService','$routeParams', function($scope, cardService, $routeParams) {
-
+app.controller('learning_card_c', ['$scope','cardService','userService','$routeParams','$route',
+    function($scope, cardService,userService, $routeParams,$route) {
+    $scope.cardsToWork = [];
     $scope.disableBtnBack = true;
     $scope.disableBtnNext = false;
     $scope.step = 1 ;
     $scope.steps_selected = [false,false,false,false];
     $scope.response = false;
+    $scope.step3_show = false;
 
     $scope.word_arabic = null;
     $scope.word_traducted = null;
 
     cardService.getCard($routeParams.card_id).then(function(promise){
+        console.log("Je suis la")
         $scope.word_arabic = promise.data.word;
         $scope.word_traducted  = promise.data.english_m;
+        $scope.sura_name = promise.data.sura_name_phonetic;
         //view.loadChart();
     });
 
 
+    $scope.startLearning = function(sura_id){
 
+    };
+
+    $scope.restartLearning = function(){
+        $route.reload();
+    }
     $scope.aRepondu = function(step){
 
-        // On passe par ce tableau car cela permet 
+        // On passe par ce tableau car cela permet de masquet tous les onglet excepté les onglets concernés
         $scope.steps_selected[step-1] = true;
 
         // On test si c'est différent de 3 afin de ne pas sauter l'étape pour afficher l'étape en front
         if(step != 3)
             $scope.nextStep();
+        else
+            $scope.step3_show = true;
         $scope.response = true;
     }
 
