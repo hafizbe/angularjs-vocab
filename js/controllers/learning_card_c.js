@@ -1,5 +1,5 @@
-app.controller('learning_card_c', ['$scope','cardService','userService','$routeParams','$route',
-    function($scope, cardService,userService, $routeParams,$route) {
+app.controller('learning_card_c', ['$scope','cardService','userService','$routeParams','$route','$location',
+    function($scope, cardService,userService, $routeParams,$route, $location) {
     $scope.cardsToWork = [];
     $scope.disableBtnBack = true;
     $scope.disableBtnNext = false;
@@ -19,6 +19,10 @@ app.controller('learning_card_c', ['$scope','cardService','userService','$routeP
         //view.loadChart();
     });
 
+    $scope.returnLearningSuraCtrl = function(){
+        //$location.path("/user/learning/sura/"+90);
+        console.log(userService);
+    }
 
     $scope.startLearning = function(sura_id){
 

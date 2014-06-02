@@ -3,6 +3,7 @@ app.controller('user_cards_c', ['$scope','userService','$routeParams',
     var view = {};
 
 	$scope.stats_cards = false;
+    $scope.sura_id = $routeParams.sura_id;
 
 	userService.getAllCardsBySuraId($routeParams.sura_id).then(function(promise){
 		$scope.stats_cards = promise.data;
