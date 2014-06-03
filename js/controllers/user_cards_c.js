@@ -1,12 +1,12 @@
-app.controller('user_cards_c', ['$scope','userService','$routeParams', 
-	function($scope, userService,$routeParams) {
+app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFactory',
+	function($scope, userService,$routeParams, cardFactory) {
     var view = {};
 
 	$scope.stats_cards = false;
     $scope.sura_id = $routeParams.sura_id;
 
-	userService.getAllCardsBySuraId($routeParams.sura_id).then(function(promise){
-		$scope.stats_cards = promise.data;
+    cardFactory.getAllCardsBySuraId($routeParams.sura_id).then(function(promise){
+		$scope.stats_cards = promise;
         //view.loadChart();
 	});
 
