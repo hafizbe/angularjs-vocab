@@ -1,7 +1,8 @@
-app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFactory',
-	function($scope, userService,$routeParams, cardFactory) {
+app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFactory','$anchorScroll',
+	function($scope, userService,$routeParams, cardFactory,$anchorScroll) {
     var view = {};
 
+    $anchorScroll();
 	$scope.stats_cards = false;
     $scope.sura_id = $routeParams.sura_id;
 
