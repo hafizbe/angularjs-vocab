@@ -1,5 +1,5 @@
-app.controller('learning_card_c', ['$scope','cardService','userService','$routeParams','$route','$location',
-    function($scope, cardService,userService, $routeParams,$route, $location) {
+app.controller('learning_card_c', ['$scope','cardService','userService','$routeParams','$route','$location','cardFactory',
+    function($scope, cardService,userService, $routeParams,$route, $location, cardFactory) {
     $scope.cardsToWork = [];
     $scope.disableBtnBack = true;
     $scope.disableBtnNext = false;
@@ -11,13 +11,18 @@ app.controller('learning_card_c', ['$scope','cardService','userService','$routeP
     $scope.word_arabic = null;
     $scope.word_traducted = null;
 
+    cardFactory.getCardBySuraIdAndCardId($routeParams.sura_id, $routeParams.card_id).then(function(promise){
+        $scope.word_arabic = promise.word;
+        $scope.word_traducted  = promise.english_m;
+        $scope.sura_name = promise.sura_name_phonetic;
+    });
+
+    /*
     cardService.getCard($routeParams.card_id).then(function(promise){
         console.log("Je suis la")
-        $scope.word_arabic = promise.data.word;
-        $scope.word_traducted  = promise.data.english_m;
-        $scope.sura_name = promise.data.sura_name_phonetic;
+        
         //view.loadChart();
-    });
+    });*/
 
     $scope.returnLearningSuraCtrl = function(){
         //$location.path("/user/learning/sura/"+90);
@@ -93,6 +98,7 @@ app.controller('learning_card_c', ['$scope','cardService','userService','$routeP
 
     // Initialisation du plugin JS
     $scope.$on('$viewContentLoaded', function(){
+
 
         /*var $validation = false;
         $('#fuelux-wizard')

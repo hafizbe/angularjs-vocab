@@ -1,9 +1,9 @@
-app.controller('sura_c', ['$scope','userService', function($scope, userService) {
+app.controller('sura_c', ['$scope','userService','suraFactory', function($scope, userService, suraFactory) {
 
 	$scope.suras = [];
 
-	userService.getSurasReport().then(function(promise){
-		$scope.suras = promise.data;
+	suraFactory.getSurasReport().then(function(promise){
+		$scope.suras = promise;
 	});
 
     $scope.isLoaded = function(){

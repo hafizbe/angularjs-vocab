@@ -25,7 +25,7 @@
             </thead>
 
             <tbody>
-            <tr ng-repeat="sura in suras">
+            <tr ng-repeat="sura in suras | limitTo:20">
                 <td class="center">{{sura.sura_id}}</td>
                 <td class="center"><a href="#user/suras/{{sura.sura_id}}/cards">{{sura.name_phonetic}}</a></td>
                 <td><div class="progress progress-striped progress-column-surah active" data-percent="{{sura.points_total_user}}%">

@@ -4,6 +4,8 @@ app.factory('cardFactory', function($http, $q){
         stepSuraToWork: null,
         cardsToWork: [],
         allCards: [],
+
+        // Récupère toutes les cartes non travaillées par sura_id
         getCardsToWorkBySuraId : function(sura_id){
             var deferred = $q.defer();
             if(factory.cardsToWork.length > 0)
@@ -26,6 +28,21 @@ app.factory('cardFactory', function($http, $q){
             return deferred.promise;
         },
 
+        // Récupère une carte dans l'api, sans vérifier si elle existe dans notre tableau
+        getCardByIdFromApi : function(card_id){
+            var deferred = $q.defer();
+            $http({method:'GET', url:'http://vocab-api.herokuapp.com/api/v1/cards/'+card_id+'?' +
+               'token=da34a57ce3e0582f56459a23bb8fe3d7'})
+               .success(function (response, status, headers, config) {
+                   deferred.resolve(response);
+               })
+               .error(function (data, status, headers, config) {
+                   deferred.reject("Impossible de récupérer la carte");
+               });
+            return deferred.promise;
+        },
+
+        //Récupère toutes les cartes par sura_id
         getAllCardsBySuraId : function(sura_id){
             var deferred = $q.defer();
             if(factory.allCards[sura_id] != undefined)
@@ -48,15 +65,29 @@ app.factory('cardFactory', function($http, $q){
             }
             return deferred.promise;
         },
+
+        //Récupère une carte par card_id et sura_id en vérifiant si elle existe dans le tableau 
         getCardBySuraIdAndCardId : function(sura_id, card_id){
             var deferred = $q.defer();
             if(factory.allCards[sura_id] != undefined)
             {
-                angular.forEach(factory.allCards[sura_id], function(value,key){
-                    console.log(key);
+                var card = null;
+                angular.forEach(factory.allCards[sura_id].cards, function(card_temp){
+                    if(card_id == card_temp.id)
+                        card = card_temp
                 })
+                deferred.resolve(card);
             }
-        }
+            else
+            {
+                factory.getCardByIdFromApi(card_id).then(function(promise){
+                    deferred.resolve(promise);
+                });
+            }
+            return deferred.promise;
+        },
+
+
 
     }
     return factory;

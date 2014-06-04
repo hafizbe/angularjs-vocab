@@ -1,5 +1,5 @@
-app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFactory','$anchorScroll',
-	function($scope, userService,$routeParams, cardFactory,$anchorScroll) {
+app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFactory','$anchorScroll','$location',
+	function($scope, userService,$routeParams, cardFactory,$anchorScroll, $location) {
     var view = {};
 
     $anchorScroll();
@@ -10,6 +10,11 @@ app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFacto
 		$scope.stats_cards = promise;
         //view.loadChart();
 	});
+
+    $scope.redirectToLearningCard = function(sura_id, card_id)
+    {
+        $location.path("/user/learning/sura/"+sura_id+"/card/"+card_id);
+    }
 
     $scope.isLoaded = function(){
         if($scope.stats_cards== false)

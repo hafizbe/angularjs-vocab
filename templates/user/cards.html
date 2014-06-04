@@ -19,7 +19,7 @@
 										</thead>
 
 										<tbody>
-											<tr ng-repeat="card in stats_cards.cards">
+											<tr ng-repeat="card in stats_cards.cards | limitTo:20">
 												<td class="center ar ">{{card.word}}</td>
 												<td class="center">{{card.english_m}}</td>
 												<td class="center"><i ng-class="detectClassPoint(card)" class="ace-icon fa fa-circle"></i></td>
@@ -27,10 +27,7 @@
                                                     <p ng-show="datePresent(card)">
                                                         {{card.date_response}}
                                                     </p>
-
-                                                    <form ng-hide="datePresent(card)"  type="GET" action="{{'#/user/learning/sura/'+sura_id+'/card/'+card.id}}">
-                                                        <input type="submit" value="L'apprendre maintenant" class="btn btn-block btn-success btn-primary" />
-                                                    </form>
+                                                        <button ng-show="!datePresent(card)" ng-click="redirectToLearningCard(card.sura_id,card.id)" class="btn btn-block btn-success btn-primary">L'apprendre maintenant</button>
 
                                                 </td>
 							
