@@ -1,6 +1,6 @@
-app.controller('home_controller', ['$scope', function($scope) {
+app.controller('home_c', ['$scope', function($scope) {
 
-
+$scope.helloWorld ="Hello world";
 
 
 }]);/**

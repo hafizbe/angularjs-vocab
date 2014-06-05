@@ -5,6 +5,37 @@ app.factory('cardFactory', function($http, $q){
         cardsToWork: [],
         allCards: [],
 
+        modifyResponseCardAndDate : function(sura_id, card_id, response, dateResponse){
+            angular.forEach(factory.allCards[sura_id].cards, function(card_temp){
+                if(card_id == card_temp.id)
+                {
+                    card_temp.response = response
+                    card_temp.date_response = dateResponse
+                    switch(card_temp.response){
+                        case 0:
+                            factory.allCards[sura_id].point1 =  factory.allCards[sura_id].point1 + parseInt(1);
+                            factory.allCards[sura_id].nb_cards_unknown =  factory.allCards[sura_id].nb_cards_unknown -
+                                parseInt(1);
+
+                            break;
+                        case 3:
+                            factory.allCards[sura_id].point2 =  factory.allCards[sura_id].point2  + parseInt(1);
+                            factory.allCards[sura_id].nb_cards_unknown =  factory.allCards[sura_id].nb_cards_unknown -
+                                parseInt(1);
+                            break;
+                        case 5:
+                            factory.allCards[sura_id].point3 =  factory.allCards[sura_id].point3 + parseInt(1);
+                            factory.allCards[sura_id].nb_cards_unknown =  factory.allCards[sura_id].nb_cards_unknown -
+                                parseInt(1);
+                            break;
+
+
+                    }
+                }
+
+            })
+        },
+
         // Récupère toutes les cartes non travaillées par sura_id
         getCardsToWorkBySuraId : function(sura_id){
             var deferred = $q.defer();

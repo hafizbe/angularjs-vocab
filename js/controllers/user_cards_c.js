@@ -32,11 +32,11 @@ app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFacto
 
     $scope.detectClassPoint = function(card){
         switch(card.response){
-            case 1:
-                return "red"
-            case 2:
-                return "orange";
+            case 0:
+                return "red";
             case 3:
+                return "orange";
+            case 5:
                 return "green";
             default :
                 return "";
