@@ -7,9 +7,44 @@ var app = angular.module('nomAppli', ['ngRoute','ngAnimate']);
   $httpProvider.defaults.headers.put = {};
   $httpProvider.defaults.headers.patch = {};
 }]);*/
+// register the interceptor as a service
+app.factory('HttpInterceptor', ['$q', '$rootScope', function($q, $rootScope) {
+       return {
+            // On request success
+            request : function(config) {
+                console.log(config)
+                return config || $q.when(config);
+            },
 
-app.config(['$routeProvider',
-    function($routeProvider) {
+            // On request failure
+            requestError : function(rejection) {
+                //console.log(rejection); // Contains the data about the error on the request.  
+                // Return the promise rejection.
+                return $q.reject(rejection);
+            },
+
+            // On response success
+            response : function(response) {
+                console.log("la réponse vient d'être récue")
+                //console.log(response); // Contains the data from the response.
+                // Return the response or promise.
+                return response || $q.when(response);
+            },
+
+            // On response failure
+            responseError : function(rejection) {
+                //console.log(rejection); // Contains the data about the error.
+                //Check whether the intercept param is set in the config array. 
+                //If the intercept param is missing or set to true, we display a modal containing the error
+                alert("RESPONSE ERROR");
+                // Return the promise rejection.
+                return $q.reject(rejection);
+            }
+        };
+ }]);
+
+app.config(['$routeProvider','$httpProvider',
+    function($routeProvider, $httpProvider) {
         $routeProvider.
             when('/', {
                 templateUrl: 'templates/home.html',
@@ -31,75 +66,10 @@ app.config(['$routeProvider',
                 controller: "learning_sura_c"
             })
 
+            $httpProvider.interceptors.push('HttpInterceptor');
+
     }]);
 
 
-var paginator = angular.module('paginator', []);
-paginator.directive('paginator', function () {
-    var pageSizeLabel = "Page size";
-    return {
-        priority: 0,
-        restrict: 'A',
-        scope: {items: '&'},
-        template:
-            '<button ng-disabled="isFirstPage()" ng-click="decPage()">&lt;</button>'
-            + '{{paginator.currentPage+1}}/{{numberOfPages()}}'
-            + '<button ng-disabled="isLastPage()" ng-click="incPage()">&gt;</button>'
-            + '<span>' + pageSizeLabel + '</span>'
-            + '<select ng-model="paginator.pageSize" ng-options="size for size in pageSizeList"></select>',
-        replace: false,
-        compile: function compile(tElement, tAttrs, transclude) {
-            return {
-                pre: function preLink(scope, iElement, iAttrs, controller) {
-                    scope.pageSizeList = [10, 20, 50, 100];
-                    scope.paginator = {
-                        pageSize: 10,
-                        currentPage: 0
-                    };
 
-                    scope.isFirstPage = function () {
-                        return scope.paginator.currentPage == 0;
-                    };
-                    scope.isLastPage = function () {
-                        return scope.paginator.currentPage
-                            >= scope.items().length / scope.paginator.pageSize - 1;
-                    };
-                    scope.incPage = function () {
-                        if (!scope.isLastPage()) {
-                            scope.paginator.currentPage++;
-                        }
-                    };
-                    scope.decPage = function () {
-                        if (!scope.isFirstPage()) {
-                            scope.paginator.currentPage--;
-                        }
-                    };
-                    scope.firstPage = function () {
-                        scope.paginator.currentPage = 0;
-                    };
-                    scope.numberOfPages = function () {
-                        return Math.ceil(scope.items().length / scope.paginator.pageSize);
-                    };
-                    scope.$watch('paginator.pageSize', function(newValue, oldValue) {
-                        if (newValue != oldValue) {
-                            scope.firstPage();
-                        }
-                    });
 
-                    // ---- Functions available in parent scope -----
-
-                    scope.$parent.firstPage = function () {
-                        scope.firstPage();
-                    };
-                    // Function that returns the reduced items list, to use in ng-repeat
-                    scope.$parent.pageItems = function () {
-                        var start = scope.paginator.currentPage * scope.paginator.pageSize;
-                        var limit = scope.paginator.pageSize;
-                        return scope.items().slice(start, start + limit);
-                    };
-                },
-                post: function postLink(scope, iElement, iAttrs, controller) {}
-            };
-        }
-    };
-});
