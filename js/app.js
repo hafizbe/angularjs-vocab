@@ -64,9 +64,13 @@ app.config(['$routeProvider','$httpProvider',
             }).when('/user/learning/sura/:sura_id' , {
                 template: ' ',
                 controller: "learning_sura_c"
+            }).when('/user/revision/card/:card_id' , {
+                templateUrl: "templates/revision/revision_card.html",
+                controller: "revision_c"
             })
 
-            $httpProvider.interceptors.push('HttpInterceptor');
+            //$httpProvider.interceptors.push('HttpInterceptor');
+
 
     }]);
 

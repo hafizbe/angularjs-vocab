@@ -1,6 +1,19 @@
-app.controller('home_c', ['$scope', function($scope) {
+app.controller('home_c',['$scope','statisticFactory', function($scope, statisticFactory) {
 
-$scope.helloWorld ="Hello world";
+
+    statisticFactory.getStatisticsHome().then(function(promise){
+        $scope.cardsToReviseCount = promise.cards_to_revise.length;
+        $scope.percentageQuran = promise.percentage_total;
+        //view.loadChart();
+    });
+
+    $scope.isLoaded = function(){
+        if($scope.cardsToReviseCount != undefined)
+            return true;
+        else
+            return false;
+    }
+
 
 
 }]);/**

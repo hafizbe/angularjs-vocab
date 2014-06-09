@@ -5,6 +5,13 @@ app.factory('cardFactory', function($http, $q){
         cardsToWork: [],
         allCards: [],
 
+        modifyPercentage : function(newPercentage, sura_id){
+            if(factory.allCards[sura_id] != undefined)
+            {
+                console.log(factory)
+                factory.allCards[sura_id].percentage_sura = newPercentage;
+            }
+        },
         modifyResponseCardAndDate : function(sura_id, card_id, response, dateResponse){
             angular.forEach(factory.allCards[sura_id].cards, function(card_temp){
                 if(card_id == card_temp.id)

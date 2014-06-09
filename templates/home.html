@@ -1,4 +1,4 @@
-<div class="col-sm-12">
+<div class="col-sm-12 fader" ng-show="isLoaded()">
     <div class="col-sm-12">
         <h1>Bienvenue sur Quran Vocabulary</h1>
         <p class="lead">
@@ -7,41 +7,42 @@
         <hr>
     </div>
 
-    <div class="col-sm-4 home_block">
-        <div class="home_block_text">
-            <form action="http://google.com">
-                <button class="btn btn-success btn-block">Commencer la révision</button>
+        <div class="col-sm-4 home_block fader" ng-show="isLoaded()">
+            <div class="home_block_text">
+                <form action="http://google.com">
+                    <button class="btn btn-success btn-block">Commencer la révision</button>
 
-            </form>
-            <p><span class="number-green">12</span> mots à réviser pour aujourd'hui.</p>
-        </div>
-
-    </div>
-
-    <div class="col-sm-4 home_block">
-        <div class="home_block_text">
-            <button class="btn btn-danger btn-block">Apprendre de nouveaux mots</button>
-            <p>Vous connaissez déjà <span class="number-red">43</span> mots répartis sur <span class="number-red">10</span> sourates.</p>
-
-
-        </div>
-
-    </div>
-    <div class="col-sm-4 home_block">
-        <div class="home_block_text">
-            <button class="btn btn-warning btn-block">Voir toutes mes statistiques</button>
-            <p>Vous comprenez <span class="number-yellow">7%</span> du coran.</p>
-            <div class="progress progress-small progress-striped active">
-                <div class="progress-bar progress-bar-warning" style="width: 40%;"></div>
+                </form>
+                <p><span class="number-green">{{cardsToReviseCount}}</span> mots à réviser pour aujourd'hui.</p>
             </div>
 
         </div>
 
-    </div>
+        <div class="col-sm-4 home_block">
+            <div class="home_block_text">
+                <button class="btn btn-danger btn-block">Apprendre de nouveaux mots</button>
+                <p>Vous connaissez déjà <span class="number-red">43</span> mots répartis sur <span class="number-red">10</span> sourates.</p>
+
+
+            </div>
+
+        </div>
+        <div class="col-sm-4 home_block">
+            <div class="home_block_text">
+                <button class="btn btn-warning btn-block">Voir toutes mes statistiques</button>
+                <p>Vous comprenez <span class="number-yellow">{{percentageQuran}}%</span> du coran.</p>
+                <div class="progress progress-small progress-striped active">
+                    <div class="progress-bar progress-bar-warning" style="width: {{percentageQuran}}%;"></div>
+                </div>
+
+            </div>
+
+        </div>
+
 
 </div>
 
-<div class="col-sm-12">
+<div class="col-sm-12 fader" ng-show="isLoaded()">
 
     <div class="col-sm-4 home_block">
         <div class="home_block_text">
@@ -123,3 +124,6 @@
         </div>
 
     </div>
+</div>
+<p ng-hide="isLoaded()"><i class="ace-icon fa fa-spinner fa-spin orange bigger-125"></i>  Chargement ...</p>
+

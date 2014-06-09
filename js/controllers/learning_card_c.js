@@ -23,7 +23,8 @@ app.controller('learning_card_c', ['$scope','cardService','userService','$routeP
     {
         interrogationFactory.createInterrogation(card_id,response).then(function(promise){
            cardFactory.modifyResponseCardAndDate(promise.sura_id, card_id, promise.response, promise.date_response);
-            $location.path("/user/suras/"+$scope.sura_id+"/cards");
+           cardFactory.modifyPercentage(promise.percentage_sura, promise.sura_id);
+           $location.path("/user/suras/"+$scope.sura_id+"/cards");
         });
 
 
