@@ -1,9 +1,10 @@
-app.controller('home_c',['$scope','statisticFactory', function($scope, statisticFactory) {
+app.controller('home_c',['$scope','statisticFactory','$location', function($scope, statisticFactory,$location) {
 
 
     statisticFactory.getStatisticsHome().then(function(promise){
         $scope.cardsToReviseCount = promise.cards_to_revise.length;
         $scope.percentageQuran = promise.percentage_total;
+
         //view.loadChart();
     });
 
@@ -12,6 +13,12 @@ app.controller('home_c',['$scope','statisticFactory', function($scope, statistic
             return true;
         else
             return false;
+    }
+
+    $scope.redirectToRevisionCard = function(){
+        var card = statisticFactory.getFirstCardToRevise();
+        if(card != false)
+            $location.path("/user/revision/card/"+card.id);
     }
 
 

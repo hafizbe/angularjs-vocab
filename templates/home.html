@@ -9,10 +9,7 @@
 
         <div class="col-sm-4 home_block fader" ng-show="isLoaded()">
             <div class="home_block_text">
-                <form action="http://google.com">
-                    <button class="btn btn-success btn-block">Commencer la révision</button>
-
-                </form>
+                <button ng-click="redirectToRevisionCard()" class="btn btn-success btn-block">Commencer la révision</button>
                 <p><span class="number-green">{{cardsToReviseCount}}</span> mots à réviser pour aujourd'hui.</p>
             </div>
 

@@ -2,6 +2,17 @@ app.factory('statisticFactory', function($http, $q){
     var factory = {
         cards_to_revise: [],
         percentage_total: 0,
+        getFirstCardToRevise: function(){
+            if(factory.cards_to_revise.length != 0)
+                return factory.cards_to_revise[0];
+            else
+                return false;
+        },
+        deleteFirstCard : function(){
+            //TODO : Appeler en ajax la requête pour faire la mise à jour
+
+            factory.cards_to_revise.shift();
+        },
         getStatisticsHome : function(){
             var deferred = $q.defer();
             //console.log(factory.cards_to_revise)
