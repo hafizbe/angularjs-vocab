@@ -19,7 +19,7 @@
 										</thead>
 
 										<tbody>
-											<tr ng-repeat="card in stats_cards.cards | limitTo:20">
+											<tr ng-repeat="card in stats_cards.cards ">
 												<td class="center ar ">{{card.word}}</td>
 												<td class="center">{{card.english_m}}</td>
 												<td class="center"><i ng-class="detectClassPoint(card)" class="ace-icon fa fa-circle"></i></td>

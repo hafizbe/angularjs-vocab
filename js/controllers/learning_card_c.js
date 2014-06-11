@@ -10,18 +10,21 @@ app.controller('learning_card_c', ['$scope','cardService','userService','$routeP
 
     $scope.word_arabic = null;
     $scope.word_traducted = null;
+    $scope.name_sura = null;
     $scope.card_id = $routeParams.card_id;
     $scope.sura_id = $routeParams.sura_id;
 
     cardFactory.getCardBySuraIdAndCardId($routeParams.sura_id, $routeParams.card_id).then(function(promise){
         $scope.word_arabic = promise.word;
         $scope.word_traducted  = promise.english_m;
+
         $scope.sura_name = promise.sura_name_phonetic;
     });
 
     $scope.createInterrogation = function(card_id, response)
     {
         interrogationFactory.createInterrogation(card_id,response).then(function(promise){
+
            cardFactory.modifyResponseCardAndDate(promise.sura_id, card_id, promise.response, promise.date_response);
            cardFactory.modifyPercentage(promise.percentage_sura, promise.sura_id);
            $location.path("/user/suras/"+$scope.sura_id+"/cards");

@@ -2,7 +2,14 @@
     <h1>Révision phase</h1>
 </div>
 <h3 class="header smaller lighter green"><i class="fa fa-arrow-circle-o-right fa-3"></i> Sourate : {{name_sura}}</h3>
+<div class="alert alert-block alert-success ng-scope">
+    <button type="button" class="close" data-dismiss="alert">
+        <i class="ace-icon fa fa-times"></i>
+    </button>
 
+    <strong class="red">Courage ! </strong> Il vous reste <strong>{{nb_cards_restantes}}</strong> cartes. Ne vous inquiétez pas, concentrez-vous et Allah vous facilitera !
+
+</div>
 <hr>
 
 <div ng-class="detectActive(1)" class="step-pane" id="step1">

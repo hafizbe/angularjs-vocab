@@ -71,6 +71,10 @@ app.config(['$routeProvider','$httpProvider',
 
             //$httpProvider.interceptors.push('HttpInterceptor');
 
+        $httpProvider.defaults.headers.patch = {
+            'Content-Type': 'application/json;charset=utf-8'
+        }
+
 
     }]);
 
