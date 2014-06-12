@@ -1,5 +1,5 @@
-app.controller('learning_card_c', ['$scope','cardService','userService','$routeParams','$route','$location','cardFactory','interrogationFactory',
-    function($scope, cardService,userService, $routeParams,$route, $location, cardFactory, interrogationFactory) {
+app.controller('learning_card_c', ['$scope','cardService','userService','$routeParams','$route','$location','cardFactory','interrogationFactory','suraFactory',
+    function($scope, cardService,userService, $routeParams,$route, $location, cardFactory, interrogationFactory, suraFactory) {
     $scope.cardsToWork = [];
     $scope.disableBtnBack = true;
     $scope.disableBtnNext = false;
@@ -27,6 +27,7 @@ app.controller('learning_card_c', ['$scope','cardService','userService','$routeP
 
            cardFactory.modifyResponseCardAndDate(promise.sura_id, card_id, promise.response, promise.date_response);
            cardFactory.modifyPercentage(promise.percentage_sura, promise.sura_id);
+           suraFactory.updateSurasReport(promise.statistics_sura, promise.sura_id)
            $location.path("/user/suras/"+$scope.sura_id+"/cards");
         });
 

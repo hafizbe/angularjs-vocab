@@ -21,7 +21,16 @@ app.factory('suraFactory', function($http, $q){
                 });
             }
             return deferred.promise;
-		}
+		},
+
+        updateSurasReport: function(statistics, sura_id){
+            if(factory.surasReport != undefined){
+                factory.surasReport[sura_id - 1].point1 = statistics.point1
+                factory.surasReport[sura_id - 1].point2 = statistics.point2
+                factory.surasReport[sura_id - 1].point3 = statistics.point3
+                factory.surasReport[sura_id - 1].points_total_user = statistics.points_total_user
+            }
+        }
 	}
 
 	return factory;

@@ -1,67 +1,67 @@
 <div class="col-sm-8">
 
-										<h3 class="header smaller lighter red">Sura {{stats_cards.sura_name_phonetic}}</h3>
-										<form type="GET" action="{{'#/user/learning/sura/'+sura_id}}">
-											<button class="btn btn-danger btn-block">Commencer l'apprentissage !</button>
-                                        </form>
-										<hr>
-										<h3 class="header smaller lighter ">Cartes de la sourate</h3>
+		<h3 class="header smaller lighter red">Sura {{stats_cards.sura_name_phonetic}}</h3>
+		<form type="GET" action="{{'#/user/learning/sura/'+sura_id}}">
+			<button ng-show="hasCardsToLearn()" class="btn btn-danger btn-block">Commencer l'apprentissage !</button>
+        </form>
+		<hr>
+		<h3 class="header smaller lighter ">Cartes de la sourate</h3>
 
-                                        <p ng-hide="isLoaded()"><i class="ace-icon fa fa-spinner fa-spin orange bigger-125"></i> Chargement ... </p>
-										<table  ng-show="isLoaded()" id="tab_lst_mots" class="table table-striped table-bordered table-hover ">
-										<thead>
-											<tr>
-												<th class="center" id="col_arabe_meaning">Arabe</th>
-												<th class="center" id="col_translation_meaning">Anglais</th>
-												<th>Etat</th>
-												<th>Dernière révision</th>
-											</tr>
-										</thead>
+        <p ng-hide="isLoaded()"><i class="ace-icon fa fa-spinner fa-spin orange bigger-125"></i> Chargement ... </p>
+		<table  ng-show="isLoaded()" id="tab_lst_mots" class="table table-striped table-bordered table-hover ">
+		<thead>
+			<tr>
+				<th class="center" id="col_arabe_meaning">Arabe</th>
+				<th class="center" id="col_translation_meaning">Anglais</th>
+				<th>Etat</th>
+				<th>Dernière révision</th>
+			</tr>
+		</thead>
 
-										<tbody>
-											<tr ng-repeat="card in stats_cards.cards ">
-												<td class="center ar ">{{card.word}}</td>
-												<td class="center">{{card.english_m}}</td>
-												<td class="center"><i ng-class="detectClassPoint(card)" class="ace-icon fa fa-circle"></i></td>
-												<td class="center">
-                                                    <p ng-show="datePresent(card)">
-                                                        {{card.date_response}}
-                                                    </p>
-                                                        <button ng-show="!datePresent(card)" ng-click="redirectToLearningCard(card.sura_id,card.id)" class="btn btn-block btn-success btn-primary">L'apprendre maintenant</button>
+		<tbody>
+			<tr ng-repeat="card in stats_cards.cards ">
+				<td class="center ar ">{{card.word}}</td>
+				<td class="center">{{card.english_m}}</td>
+				<td class="center"><i ng-class="detectClassPoint(card)" class="ace-icon fa fa-circle"></i></td>
+				<td class="center">
+                    <p ng-show="datePresent(card)">
+                        {{card.date_response}}
+                    </p>
+                        <button ng-show="!datePresent(card)" ng-click="redirectToLearningCard(card.sura_id,card.id)" class="btn btn-block btn-success btn-primary">L'apprendre maintenant</button>
 
-                                                </td>
-							
-											</tr>
-										</tbody>
-									</table>
-									</div>
-									<div class="col-sm-4 ">
+                </td>
 
-										<h3 class="header smaller lighter green"> Vos Statistiques</h3>
-                                        <p ng-hide="isLoaded()"><i class="ace-icon fa fa-spinner fa-spin orange bigger-125"></i> Chargement ... </p>
-                                        <div class="fader" ng-show="isLoaded()">
-                                            Cette sourate est composé de <span class="blue">{{stats_cards.nb_cards}}</span> cartes
-                                            <hr>
-                                            <ul class="list-unstyled spaced2">
-                                                <li>
-                                                    <span class="green"><strong>{{stats_cards.point3}}</strong></span> cartes <strong>connus</strong>
-                                                </li>
-                                                <li>
-                                                    <span class="orange"><strong>{{stats_cards.point2}}</strong></span> cartes en<strong>cours d'apprentissage</strong>
-                                                </li>
-                                                <li>
-                                                    <span class="red"><strong>{{stats_cards.point1}}</strong></span> cartes à <strong>revoir</strong>
-                                                </li>
-                                                <li>
-                                                    <span class="black"><strong>{{stats_cards.nb_cards_unknown}}</strong></span> cartes restante à <strong>apprendre</strong>
-                                                </li>
-                                            </ul>
-                                            <hr>
-                                            <div class="progress progress-striped active" data-percent="{{stats_cards.percentage_sura}}%">
-                                                <div class="progress-bar progress-bar-success" style="width: {{stats_cards.percentage_sura}}%;"></div>
-                                            </div>
-                                        </div>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	<div class="col-sm-4 ">
+
+		<h3 class="header smaller lighter green"> Vos Statistiques</h3>
+        <p ng-hide="isLoaded()"><i class="ace-icon fa fa-spinner fa-spin orange bigger-125"></i> Chargement ... </p>
+        <div class="fader" ng-show="isLoaded()">
+            Cette sourate est composé de <span class="blue">{{stats_cards.nb_cards}}</span> cartes
+            <hr>
+            <ul class="list-unstyled spaced2">
+                <li>
+                    <span class="green"><strong>{{stats_cards.point3}}</strong></span> cartes <strong>connus</strong>
+                </li>
+                <li>
+                    <span class="orange"><strong>{{stats_cards.point2}}</strong></span> cartes en<strong>cours d'apprentissage</strong>
+                </li>
+                <li>
+                    <span class="red"><strong>{{stats_cards.point1}}</strong></span> cartes à <strong>revoir</strong>
+                </li>
+                <li>
+                    <span class="black"><strong>{{stats_cards.nb_cards_unknown}}</strong></span> cartes restante à <strong>apprendre</strong>
+                </li>
+            </ul>
+            <hr>
+            <div class="progress progress-striped active" data-percent="{{stats_cards.percentage_sura}}%">
+                <div class="progress-bar progress-bar-success" style="width: {{stats_cards.percentage_sura}}%;"></div>
+            </div>
+        </div>
 
 
-									</div>
-								</div>
+	</div>
+</div>

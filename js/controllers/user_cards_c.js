@@ -43,6 +43,10 @@ app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFacto
         }
     }
 
+    $scope.hasCardsToLearn = function(){
+        return cardFactory.hasCardsToLearn($routeParams.sura_id);
+    }
+
     /*view.loadChart = function(){
         $('.easy-pie-chart').each(function(){
             $(this).easyPieChart({

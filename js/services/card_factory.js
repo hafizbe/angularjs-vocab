@@ -62,29 +62,7 @@ app.factory('cardFactory', function($http, $q){
 
         },
 
-        /*
-        getCardsToWorkBySuraId : function(sura_id){
-            var deferred = $q.defer();
-            if(factory.cardsToWork.length > 0)
-            {
-                deferred.resolve(factory.cardsToWork);
-            }
-            else
-            {
-                $http({method:'GET', url:'http://vocab-api.herokuapp.com/api/v1/users/cards_to_work/' +
-                    sura_id+'?token=da34a57ce3e0582f56459a23bb8fe3d7'})
-                    .success(function (response, status, headers, config) {
-                        factory.cardsToWork = response;
-                        deferred.resolve(response);
-                    })
-                    .error(function (data, status, headers, config) {
-                        deferred.reject("Impossible de récupérer les cartes");
-                    });
-
-            }
-            return deferred.promise;
-        },
-*/
+        
         // Récupère une carte dans l'api, sans vérifier si elle existe dans notre tableau
         getCardByIdFromApi : function(card_id){
             var deferred = $q.defer();
@@ -143,6 +121,15 @@ app.factory('cardFactory', function($http, $q){
             }
             return deferred.promise;
         },
+
+        hasCardsToLearn : function(sura_id){
+            if(factory.allCards[sura_id] != undefined){
+                if(factory.allCards[sura_id].nb_cards_unknown == 0)
+                    return false;
+                else
+                    return true;
+            }
+        }
 
 
 
