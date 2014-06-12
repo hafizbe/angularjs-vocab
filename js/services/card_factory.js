@@ -106,10 +106,14 @@ app.factory('cardFactory', function($http, $q){
             var deferred = $q.defer();
             if(factory.allCards[sura_id] != undefined)
             {
+
                 var card = null;
                 angular.forEach(factory.allCards[sura_id].cards, function(card_temp){
-                    if(card_id == card_temp.id)
+                    if(card_id == card_temp.id){
                         card = card_temp
+                        card.sura_name_phonetic = factory.allCards[sura_id].sura_name_phonetic
+                    }
+                        
                 })
                 deferred.resolve(card);
             }

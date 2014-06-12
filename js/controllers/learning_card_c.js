@@ -17,8 +17,7 @@ app.controller('learning_card_c', ['$scope','cardService','userService','$routeP
     cardFactory.getCardBySuraIdAndCardId($routeParams.sura_id, $routeParams.card_id).then(function(promise){
         $scope.word_arabic = promise.word;
         $scope.word_traducted  = promise.english_m;
-
-        $scope.sura_name = promise.sura_name_phonetic;
+        $scope.name_sura = promise.sura_name_phonetic;
     });
 
     $scope.createInterrogation = function(card_id, response)
@@ -31,8 +30,6 @@ app.controller('learning_card_c', ['$scope','cardService','userService','$routeP
            $location.path("/user/suras/"+$scope.sura_id+"/cards");
         });
 
-
-
     }
 
     /*
@@ -44,7 +41,6 @@ app.controller('learning_card_c', ['$scope','cardService','userService','$routeP
 
     $scope.returnLearningSuraCtrl = function(){
         //$location.path("/user/learning/sura/"+90);
-        console.log(userService);
     }
 
     $scope.startLearning = function(sura_id){
