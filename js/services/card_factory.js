@@ -3,6 +3,7 @@ app.factory('cardFactory', function($http, $q){
         stepToWork: 0,
         stepSuraToWork: null,
         allCards: [],
+        cardsToLearn: [],
         modifyStatistics : function(new_statistic,sura_id, card_id,  response, dateResponse, percentage_sura){
             if(factory.allCards[sura_id] != undefined)
             {
@@ -132,6 +133,27 @@ app.factory('cardFactory', function($http, $q){
                     return false;
                 else
                     return true;
+            }
+        },
+
+        getCardsToLearn : function(sura_id){
+
+            if(factory.allCards[sura_id] != undefined)
+            {
+                if(factory.cardsToLearn[sura_id] == undefined)
+                {
+                    factory.cardsToLearn[sura_id] = [];
+                    angular.forEach(factory.allCards[sura_id].cards, function(card_temp){
+                        if(card_temp.response === -1)
+                        {
+                            factory.cardsToLearn[sura_id].push(card_temp)
+                        }
+
+                    })
+
+
+                }
+                console.log(factory.cardsToLearn);
             }
         }
 

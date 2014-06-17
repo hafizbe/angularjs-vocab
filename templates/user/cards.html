@@ -1,9 +1,7 @@
 <div class="col-sm-8">
 
 		<h3 class="header smaller lighter red">Sura {{stats_cards.sura_name_phonetic}}</h3>
-		<form type="GET" action="{{'#/user/learning/sura/'+sura_id}}">
-			<button ng-show="hasCardsToLearn()" class="btn btn-danger btn-block">Commencer l'apprentissage !</button>
-        </form>
+			<button ng-click="startLearning()" ng-show="hasCardsToLearn()" class="btn btn-danger btn-block">Commencer l'apprentissage !</button>
 		<hr>
 		<h3 class="header smaller lighter ">Cartes de la sourate</h3>
 
