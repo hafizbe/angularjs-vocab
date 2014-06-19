@@ -25,7 +25,7 @@
                     <p ng-show="datePresent(card)">
                         {{card.date_response}}
                     </p>
-                        <button ng-show="!datePresent(card)" ng-click="redirectToLearningCard(card.sura_id,card.id)" class="btn btn-block btn-success btn-primary">L'apprendre maintenant</button>
+                        <button ng-show="!datePresent(card)" ng-click="redirectToLearningCard(card.sura_id,card.id, false)" class="btn btn-block btn-success btn-primary">L'apprendre maintenant</button>
 
                 </td>
 

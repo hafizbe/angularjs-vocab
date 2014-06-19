@@ -2,6 +2,7 @@ app.factory('cardFactory', function($http, $q){
     var factory = {
         stepToWork: 0,
         stepSuraToWork: null,
+        modeLearningSura: false,
         allCards: [],
         cardsToLearn: [],
         modifyStatistics : function(new_statistic,sura_id, card_id,  response, dateResponse, percentage_sura){
@@ -24,7 +25,6 @@ app.factory('cardFactory', function($http, $q){
         modifyPercentage : function(newPercentage, sura_id){
             if(factory.allCards[sura_id] != undefined)
             {
-                console.log(factory)
                 factory.allCards[sura_id].percentage_sura = newPercentage;
             }
         },
@@ -63,7 +63,6 @@ app.factory('cardFactory', function($http, $q){
 
         },
 
-        
         // Récupère une carte dans l'api, sans vérifier si elle existe dans notre tableau
         getCardByIdFromApi : function(card_id){
             var deferred = $q.defer();
@@ -153,12 +152,28 @@ app.factory('cardFactory', function($http, $q){
 
 
                 }
-                console.log(factory.cardsToLearn);
+            }
+        },
+
+        getFirstCardToLearn : function(sura_id){
+            if(factory.cardsToLearn[sura_id] != undefined && factory.cardsToLearn[sura_id].length > 0){
+                return factory.cardsToLearn[sura_id][0];
+            }
+        },
+
+        deleteCardToLearn : function(card_id, sura_id){
+            var i = 0;
+            if(factory.cardsToLearn[sura_id] != undefined){
+                angular.forEach(factory.cardsToLearn[sura_id], function(card_temp){
+
+                    if(card_temp.id == card_id)
+                    {
+                        factory.cardsToLearn[sura_id].splice(i,1);
+                    }
+                    i = i +1;
+                })
             }
         }
-
-
-
     }
     return factory;
 });

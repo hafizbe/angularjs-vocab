@@ -24,7 +24,7 @@ app.factory('suraFactory', function($http, $q){
 		},
 
         updateSurasReport: function(statistics, sura_id){
-            if(factory.surasReport != undefined){
+            if(factory.surasReport != undefined && factory.surasReport.length > 0){
                 factory.surasReport[sura_id - 1].point1 = statistics.point1
                 factory.surasReport[sura_id - 1].point2 = statistics.point2
                 factory.surasReport[sura_id - 1].point3 = statistics.point3

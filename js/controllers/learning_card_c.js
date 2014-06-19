@@ -23,13 +23,28 @@ app.controller('learning_card_c', ['$scope','cardService','userService','$routeP
     $scope.createInterrogation = function(card_id, response)
     {
         interrogationFactory.createInterrogation(card_id,response).then(function(promise){
+            cardFactory.modifyResponseCardAndDate(promise.sura_id, card_id, promise.response, promise.date_response);
+            cardFactory.modifyPercentage(promise.percentage_sura, promise.sura_id);
+            suraFactory.updateSurasReport(promise.statistics_sura, promise.sura_id)
 
-           cardFactory.modifyResponseCardAndDate(promise.sura_id, card_id, promise.response, promise.date_response);
-           cardFactory.modifyPercentage(promise.percentage_sura, promise.sura_id);
-           suraFactory.updateSurasReport(promise.statistics_sura, promise.sura_id)
-           $location.path("/user/suras/"+$scope.sura_id+"/cards");
+            // Ici on test si le mode Learning est activé. Si c'est le cas, on va s'assureait de redirigé vers la carte
+            // suivante
+            if(cardFactory.modeLearningSura)
+            {
+                cardFactory.cardsToLearn[promise.sura_id].shift();
+
+                firstCardToLearn = cardFactory.getFirstCardToLearn(promise.sura_id);
+                if(firstCardToLearn != undefined)
+                {
+                    $location.path("/user/learning/sura/"+$routeParams.sura_id+"/card/"+firstCardToLearn.id);
+                }
+            }
+            else
+            {
+                cardFactory.deleteCardToLearn(card_id, promise.sura_id);
+                $location.path("/user/suras/"+$scope.sura_id+"/cards");
+            }
         });
-
     }
 
     /*

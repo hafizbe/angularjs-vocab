@@ -11,8 +11,9 @@ app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFacto
         //view.loadChart();
 	});
 
-    $scope.redirectToLearningCard = function(sura_id, card_id)
+    $scope.redirectToLearningCard = function(sura_id, card_id, isLearningMode)
     {
+        cardFactory.modeLearningSura = isLearningMode;
         $location.path("/user/learning/sura/"+sura_id+"/card/"+card_id);
     }
 
@@ -48,7 +49,11 @@ app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFacto
     }
 
     $scope.startLearning = function(){
+        //Récupération des cartes à réviser
         cardFactory.getCardsToLearn($routeParams.sura_id);
+
+        firstCardToLearn = cardFactory.getFirstCardToLearn($routeParams.sura_id);
+        $scope.redirectToLearningCard($routeParams.sura_id, firstCardToLearn.id, true)
     }
 
     /*view.loadChart = function(){

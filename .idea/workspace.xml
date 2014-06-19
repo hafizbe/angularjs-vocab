@@ -23,30 +23,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="card_factory.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="card_factory.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/services/card_factory.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6820682" vertical-offset="0" max-vertical-offset="1060">
-              <caret line="147" column="25" selection-start-line="147" selection-start-column="25" selection-end-line="147" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="940">
+              <caret line="163" column="8" selection-start-line="163" selection-start-column="8" selection-end-line="163" selection-end-column="8" />
               <folding>
-                <element signature="e#278#1038#0" expanded="false" />
-                <element signature="e#1099#1305#0" expanded="false" />
-                <element signature="e#1393#2974#0" expanded="false" />
-                <element signature="e#3122#3657#0" expanded="false" />
-                <element signature="e#3756#4720#0" expanded="false" />
-                <element signature="e#4881#5650#0" expanded="false" />
-                <element signature="e#5696#5933#0" expanded="false" />
+                <element signature="e#311#1071#0" expanded="false" />
+                <element signature="e#1132#1301#0" expanded="false" />
+                <element signature="e#1389#2970#0" expanded="false" />
+                <element signature="e#3109#3644#0" expanded="false" />
+                <element signature="e#3743#4707#0" expanded="false" />
+                <element signature="e#4868#5637#0" expanded="false" />
+                <element signature="e#5683#5920#0" expanded="false" />
+                <element signature="e#5966#6512#0" expanded="false" />
+                <element signature="e#6562#6748#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="learning_card_c.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="learning_card_c.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/controllers/learning_card_c.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="327" max-vertical-offset="2980">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.42410713" vertical-offset="0" max-vertical-offset="1040">
+              <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
+              <folding>
+                <element signature="e#812#969#0" expanded="false" />
+                <element signature="e#1038#2191#0" expanded="false" />
+                <element signature="e#1619#1983#0" expanded="false" />
+                <element signature="e#2197#2350#0" expanded="false" />
+                <element signature="e#2398#2458#0" expanded="false" />
+                <element signature="e#2504#2512#0" expanded="false" />
+                <element signature="e#2554#2586#0" expanded="false" />
+                <element signature="e#2623#3026#0" expanded="false" />
+                <element signature="e#3068#3203#0" expanded="false" />
+                <element signature="e#3237#3300#0" expanded="false" />
+                <element signature="e#3338#3457#0" expanded="false" />
+                <element signature="e#3504#3614#0" expanded="false" />
+                <element signature="e#3660#4049#0" expanded="false" />
+                <element signature="e#4136#5107#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -54,8 +71,26 @@
       <file leaf-file-name="user_cards_c.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/controllers/user_cards_c.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="351" max-vertical-offset="1500">
-              <caret line="50" column="30" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
+              <caret line="50" column="37" selection-start-line="50" selection-start-column="37" selection-end-line="50" selection-end-column="37" />
+              <folding>
+                <element signature="e#391#455#0" expanded="false" />
+                <element signature="e#542#677#0" expanded="false" />
+                <element signature="e#711#821#0" expanded="false" />
+                <element signature="e#862#972#0" expanded="false" />
+                <element signature="e#1018#1270#0" expanded="false" />
+                <element signature="e#1311#1384#0" expanded="false" />
+                <element signature="e#1423#1703#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sura_factory.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/services/sura_factory.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="520" max-vertical-offset="840">
+              <caret line="26" column="81" selection-start-line="26" selection-start-column="81" selection-end-line="26" selection-end-column="81" />
               <folding />
             </state>
           </provider>
@@ -64,8 +99,8 @@
       <file leaf-file-name="cards.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/user/cards.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.0689654" vertical-offset="0" max-vertical-offset="1400">
-              <caret line="3" column="43" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="261" max-vertical-offset="1400">
+              <caret line="27" column="121" selection-start-line="27" selection-start-column="121" selection-end-line="27" selection-end-column="121" />
               <folding />
             </state>
           </provider>
@@ -104,11 +139,12 @@
         <option value="$PROJECT_DIR$/js/controllers/revision_c.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/templates/revision/revision_card.html" />
-        <option value="$PROJECT_DIR$/js/controllers/learning_card_c.js" />
         <option value="$PROJECT_DIR$/templates/home.html" />
+        <option value="$PROJECT_DIR$/js/services/sura_factory.js" />
         <option value="$PROJECT_DIR$/templates/user/cards.html" />
         <option value="$PROJECT_DIR$/js/controllers/user_cards_c.js" />
         <option value="$PROJECT_DIR$/js/services/card_factory.js" />
+        <option value="$PROJECT_DIR$/js/controllers/learning_card_c.js" />
       </list>
     </option>
   </component>
@@ -144,7 +180,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -293,6 +328,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -369,8 +405,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-5" y="-5" width="1930" height="1050" extended-state="0" />
-    <editor active="true" />
+    <frame x="-5" y="-5" width="1930" height="1050" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -408,7 +444,9 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/css/script.css">
@@ -621,13 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/services/sura_factory.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="660">
-          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/user/suras.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.9629629" vertical-offset="0" max-vertical-offset="1040">
@@ -660,7 +691,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="3960">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -725,7 +755,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
           <caret line="3" column="42" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -739,48 +768,80 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/services/statistic_factory.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1980198" vertical-offset="0" max-vertical-offset="1020">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
           <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services/sura_factory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="840">
+          <caret line="26" column="81" selection-start-line="26" selection-start-column="81" selection-end-line="26" selection-end-column="81" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/user/cards.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.0689654" vertical-offset="0" max-vertical-offset="1400">
-          <caret line="3" column="43" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/learning_card_c.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="327" max-vertical-offset="2980">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="261" max-vertical-offset="1400">
+          <caret line="27" column="121" selection-start-line="27" selection-start-column="121" selection-end-line="27" selection-end-column="121" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/controllers/user_cards_c.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="351" max-vertical-offset="1500">
-          <caret line="50" column="30" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="900">
+          <caret line="50" column="37" selection-start-line="50" selection-start-column="37" selection-end-line="50" selection-end-column="37" />
+          <folding>
+            <element signature="e#391#455#0" expanded="false" />
+            <element signature="e#542#677#0" expanded="false" />
+            <element signature="e#711#821#0" expanded="false" />
+            <element signature="e#862#972#0" expanded="false" />
+            <element signature="e#1018#1270#0" expanded="false" />
+            <element signature="e#1311#1384#0" expanded="false" />
+            <element signature="e#1423#1703#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/services/card_factory.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6820682" vertical-offset="0" max-vertical-offset="1060">
-          <caret line="147" column="25" selection-start-line="147" selection-start-column="25" selection-end-line="147" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="940">
+          <caret line="163" column="8" selection-start-line="163" selection-start-column="8" selection-end-line="163" selection-end-column="8" />
           <folding>
-            <element signature="e#278#1038#0" expanded="false" />
-            <element signature="e#1099#1305#0" expanded="false" />
-            <element signature="e#1393#2974#0" expanded="false" />
-            <element signature="e#3122#3657#0" expanded="false" />
-            <element signature="e#3756#4720#0" expanded="false" />
-            <element signature="e#4881#5650#0" expanded="false" />
-            <element signature="e#5696#5933#0" expanded="false" />
+            <element signature="e#311#1071#0" expanded="false" />
+            <element signature="e#1132#1301#0" expanded="false" />
+            <element signature="e#1389#2970#0" expanded="false" />
+            <element signature="e#3109#3644#0" expanded="false" />
+            <element signature="e#3743#4707#0" expanded="false" />
+            <element signature="e#4868#5637#0" expanded="false" />
+            <element signature="e#5683#5920#0" expanded="false" />
+            <element signature="e#5966#6512#0" expanded="false" />
+            <element signature="e#6562#6748#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/learning_card_c.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42410713" vertical-offset="0" max-vertical-offset="1040">
+          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
+          <folding>
+            <element signature="e#812#969#0" expanded="false" />
+            <element signature="e#1038#2191#0" expanded="false" />
+            <element signature="e#1619#1983#0" expanded="false" />
+            <element signature="e#2197#2350#0" expanded="false" />
+            <element signature="e#2398#2458#0" expanded="false" />
+            <element signature="e#2504#2512#0" expanded="false" />
+            <element signature="e#2554#2586#0" expanded="false" />
+            <element signature="e#2623#3026#0" expanded="false" />
+            <element signature="e#3068#3203#0" expanded="false" />
+            <element signature="e#3237#3300#0" expanded="false" />
+            <element signature="e#3338#3457#0" expanded="false" />
+            <element signature="e#3504#3614#0" expanded="false" />
+            <element signature="e#3660#4049#0" expanded="false" />
+            <element signature="e#4136#5107#0" expanded="false" />
           </folding>
         </state>
       </provider>
