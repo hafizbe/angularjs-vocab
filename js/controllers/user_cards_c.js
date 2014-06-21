@@ -5,6 +5,8 @@ app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFacto
     $anchorScroll();
 	$scope.stats_cards = false;
     $scope.sura_id = $routeParams.sura_id;
+    cardFactory.cardsJustLearned = [];
+    //cardFactory.fiveCardsToLearn[$routeParams.sura_id] = [];
 
     cardFactory.getAllCardsBySuraId($routeParams.sura_id).then(function(promise){
 		$scope.stats_cards = promise;
@@ -16,6 +18,8 @@ app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFacto
         cardFactory.modeLearningSura = isLearningMode;
         $location.path("/user/learning/sura/"+sura_id+"/card/"+card_id);
     }
+
+
 
     $scope.isLoaded = function(){
         if($scope.stats_cards== false)

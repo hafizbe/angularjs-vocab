@@ -5,6 +5,9 @@ app.factory('cardFactory', function($http, $q){
         modeLearningSura: false,
         allCards: [],
         cardsToLearn: [],
+        fiveCardsToLearn: [],
+        cardsJustLearned: [],
+        stepCardToLearn: null,
         modifyStatistics : function(new_statistic,sura_id, card_id,  response, dateResponse, percentage_sura){
             if(factory.allCards[sura_id] != undefined)
             {
@@ -173,6 +176,35 @@ app.factory('cardFactory', function($http, $q){
                     i = i +1;
                 })
             }
+        },
+        
+        get5CardsToLearn : function(sura_id){
+            var numberCardsToLearn =  5 - factory.cardsJustLearned.length;
+
+            if(factory.cardsToLearn[sura_id] != undefined){
+                tabCardsToLearn = [];
+                for(var i = 0 ; i < numberCardsToLearn ; i++){
+                    tabCardsToLearn.push(factory.cardsToLearn[sura_id][i]);
+                }
+
+                return tabCardsToLearn;
+            }
+
+
+
+           /* var cardsToLearn = [];
+            if(factory.cardsToLearn[sura_id] != undefined)
+            {
+               if(factory.fiveCardsToLearn.length == 0)
+               {
+                   factory.fiveCardsToLearn[sura_id] = []; // Initialisation
+                   for(var i = 0 ; i <= 4; i++){
+                       factory.fiveCardsToLearn[sura_id].push(factory.cardsToLearn[sura_id][i])
+                   }
+               }
+
+               return factory.fiveCardsToLearn[sura_id];
+            }*/
         }
     }
     return factory;

@@ -1,5 +1,7 @@
-app.controller('learning_card_c', ['$scope','cardService','userService','$routeParams','$route','$location','cardFactory','interrogationFactory','suraFactory',
-    function($scope, cardService,userService, $routeParams,$route, $location, cardFactory, interrogationFactory, suraFactory) {
+app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route','$location','cardFactory',
+    'interrogationFactory','suraFactory','learningFactory',
+    function($scope, cardService, $routeParams,$route, $location, cardFactory, interrogationFactory,
+             suraFactory, learningFactory) {
     $scope.cardsToWork = [];
     $scope.disableBtnBack = true;
     $scope.disableBtnNext = false;
@@ -13,11 +15,24 @@ app.controller('learning_card_c', ['$scope','cardService','userService','$routeP
     $scope.name_sura = null;
     $scope.card_id = $routeParams.card_id;
     $scope.sura_id = $routeParams.sura_id;
+    $scope.fiveCardsToLearn = null;
+    $scope.cardsJustLearned = cardFactory.cardsJustLearned;
 
     cardFactory.getCardBySuraIdAndCardId($routeParams.sura_id, $routeParams.card_id).then(function(promise){
         $scope.word_arabic = promise.word;
         $scope.word_traducted  = promise.english_m;
         $scope.name_sura = promise.sura_name_phonetic;
+        if(cardFactory.modeLearningSura)
+        {
+            $scope.fiveCardsToLearn = cardFactory.get5CardsToLearn($routeParams.sura_id);
+            if(cardFactory.stepCardToLearn == null)
+                cardFactory.stepCardToLearn = 0;
+            else
+                cardFactory.stepCardToLearn++;
+
+            console.log("Etape : "+cardFactory.stepCardToLearn);
+        }
+
     });
 
     $scope.createInterrogation = function(card_id, response)
@@ -31,8 +46,9 @@ app.controller('learning_card_c', ['$scope','cardService','userService','$routeP
             // suivante
             if(cardFactory.modeLearningSura)
             {
-                cardFactory.cardsToLearn[promise.sura_id].shift();
-
+                cardJustLearned = cardFactory.cardsToLearn[promise.sura_id].shift();
+                cardFactory.cardsJustLearned.push(cardJustLearned);
+                console.log(cardFactory.cardsJustLearned);
                 firstCardToLearn = cardFactory.getFirstCardToLearn(promise.sura_id);
                 if(firstCardToLearn != undefined)
                 {
@@ -47,13 +63,6 @@ app.controller('learning_card_c', ['$scope','cardService','userService','$routeP
         });
     }
 
-    /*
-    cardService.getCard($routeParams.card_id).then(function(promise){
-        console.log("Je suis la")
-        
-        //view.loadChart();
-    });*/
-
     $scope.returnLearningSuraCtrl = function(){
         //$location.path("/user/learning/sura/"+90);
     }
@@ -63,8 +72,14 @@ app.controller('learning_card_c', ['$scope','cardService','userService','$routeP
     };
 
     $scope.restartLearning = function(){
+        // Ici on diminue le nombre de l'étape, car on anticipe le fait que il va
+        // être réaugmenter au rechargement de la page. Comme cette fonction sert à réinitialiser l'apprentissage
+        // de la carte, cette instruction nous permet d'éviter d'incrémenter l'étape.
+        cardFactory.stepCardToLearn--;
+
         $route.reload();
     }
+
     $scope.aRepondu = function(step){
 
         // On passe par ce tableau car cela permet de masquet tous les onglet excepté les onglets concernés
@@ -105,7 +120,21 @@ app.controller('learning_card_c', ['$scope','cardService','userService','$routeP
         $scope.step = step;
     }
 
-    
+    $scope.detectClassStep = function(index){
+        if(cardFactory.stepCardToLearn == index)
+        {
+            return "fa fa-question-circle orange";
+        }
+        else if(cardFactory.stepCardToLearn < index)
+        {
+            return "fa  fa-square-o red";
+        }
+        else if(cardFactory.stepCardToLearn > index)
+        {
+            return "fa fa-check-square-o green";
+        }
+    }
+
     $scope.$watch('step',function(step){
         if(step == 1)
         {
@@ -123,7 +152,6 @@ app.controller('learning_card_c', ['$scope','cardService','userService','$routeP
         }
             
     });
-
 
     // Initialisation du plugin JS
     $scope.$on('$viewContentLoaded', function(){
