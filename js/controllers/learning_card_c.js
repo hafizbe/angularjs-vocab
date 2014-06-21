@@ -16,15 +16,16 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
     $scope.card_id = $routeParams.card_id;
     $scope.sura_id = $routeParams.sura_id;
     $scope.fiveCardsToLearn = null;
-    $scope.cardsJustLearned = cardFactory.cardsJustLearned;
+    $scope.cardsJustLearned = learningFactory.cardsJustLearned;
+    $scope.learningStepsStatistics = learningFactory.getLearningStepStatistic(5);
 
     cardFactory.getCardBySuraIdAndCardId($routeParams.sura_id, $routeParams.card_id).then(function(promise){
         $scope.word_arabic = promise.word;
         $scope.word_traducted  = promise.english_m;
         $scope.name_sura = promise.sura_name_phonetic;
-        if(cardFactory.modeLearningSura)
+        if(learningFactory.modeLearningSura)
         {
-            $scope.fiveCardsToLearn = cardFactory.get5CardsToLearn($routeParams.sura_id);
+            $scope.fiveCardsToLearn = learningFactory.get5CardsToLearn($routeParams.sura_id);
             if(cardFactory.stepCardToLearn == null)
                 cardFactory.stepCardToLearn = 0;
             else
@@ -44,12 +45,11 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
 
             // Ici on test si le mode Learning est activé. Si c'est le cas, on va s'assureait de redirigé vers la carte
             // suivante
-            if(cardFactory.modeLearningSura)
+            if(learningFactory.modeLearningSura)
             {
-                cardJustLearned = cardFactory.cardsToLearn[promise.sura_id].shift();
-                cardFactory.cardsJustLearned.push(cardJustLearned);
-                console.log(cardFactory.cardsJustLearned);
-                firstCardToLearn = cardFactory.getFirstCardToLearn(promise.sura_id);
+                cardJustLearned = learningFactory.cardsToLearn[promise.sura_id].shift();
+                learningFactory.cardsJustLearned.push(cardJustLearned);
+                firstCardToLearn = learningFactory.getFirstCardToLearn(promise.sura_id);
                 if(firstCardToLearn != undefined)
                 {
                     $location.path("/user/learning/sura/"+$routeParams.sura_id+"/card/"+firstCardToLearn.id);
@@ -152,6 +152,11 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
         }
             
     });
+
+    $scope.$watch('cardsJustLearned', function(cardsJustLearned){
+        if(cardsJustLearned.length == 4)
+            learningFactory.cardsJustLearned = [];
+    })
 
     // Initialisation du plugin JS
     $scope.$on('$viewContentLoaded', function(){

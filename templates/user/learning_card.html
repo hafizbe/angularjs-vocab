@@ -199,8 +199,8 @@
             <h5 class="widget-title bigger lighter">Learning Steps</h5>
 
             <div class="widget-toolbar">
-                <div class="progress progress-mini progress-striped active" style="width:100px;" data-percent="61%">
-                    <div class="progress-bar progress-bar-danger" style="width:61%"></div>
+                <div class="progress progress-mini progress-striped active" style="width:250px;" data-percent="{{learningStepsStatistics}}%">
+                    <div class="progress-bar progress-bar-danger" style="width:{{learningStepsStatistics}}%"></div>
                 </div>
             </div>
         </div>
@@ -213,11 +213,11 @@
             <div class="widget-main padding-16">
                 <ul class="list-unstyled spaced2" >
                     <li ng-repeat="cardStep in cardsJustLearned" class="ar-word-learning-li">
-                        <i class="ace-icon  fa fa-check-square-o green icon-step-learning"></i>
+                        <i class="ace-icon  fa fa-check-square-o  icon-step-learning"></i>
                         <span class="ar-step-learning">{{cardStep.word}}</span>
                     </li>
                     <li ng-repeat="cardStep in fiveCardsToLearn" class="ar-word-learning-li">
-                        <i class="ace-icon fa  fa-square-o red icon-step-learning"></i>
+                        <i class="ace-icon fa  fa-square-o  icon-step-learning"></i>
                         <span class="ar-step-learning">{{cardStep.word}}</span>
                     </li>
                     <!--<li class="ar-word-learning-li">

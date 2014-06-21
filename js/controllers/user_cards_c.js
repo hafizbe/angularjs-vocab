@@ -1,11 +1,11 @@
-app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFactory','$anchorScroll','$location',
-	function($scope, userService,$routeParams, cardFactory,$anchorScroll, $location) {
+app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFactory','$anchorScroll','$location','learningFactory',
+	function($scope, userService,$routeParams, cardFactory,$anchorScroll, $location, learningFactory) {
     var view = {};
 
     $anchorScroll();
 	$scope.stats_cards = false;
     $scope.sura_id = $routeParams.sura_id;
-    cardFactory.cardsJustLearned = [];
+    learningFactory.cardsJustLearned = [];
     //cardFactory.fiveCardsToLearn[$routeParams.sura_id] = [];
 
     cardFactory.getAllCardsBySuraId($routeParams.sura_id).then(function(promise){
@@ -15,7 +15,7 @@ app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFacto
 
     $scope.redirectToLearningCard = function(sura_id, card_id, isLearningMode)
     {
-        cardFactory.modeLearningSura = isLearningMode;
+        learningFactory.modeLearningSura = isLearningMode;
         $location.path("/user/learning/sura/"+sura_id+"/card/"+card_id);
     }
 
@@ -49,14 +49,14 @@ app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFacto
     }
 
     $scope.hasCardsToLearn = function(){
-        return cardFactory.hasCardsToLearn($routeParams.sura_id);
+        return learningFactory.hasCardsToLearn($routeParams.sura_id);
     }
 
     $scope.startLearning = function(){
         //Récupération des cartes à réviser
-        cardFactory.getCardsToLearn($routeParams.sura_id);
+        learningFactory.getCardsToLearn($routeParams.sura_id);
 
-        firstCardToLearn = cardFactory.getFirstCardToLearn($routeParams.sura_id);
+        firstCardToLearn = learningFactory.getFirstCardToLearn($routeParams.sura_id);
         $scope.redirectToLearningCard($routeParams.sura_id, firstCardToLearn.id, true)
     }
 
