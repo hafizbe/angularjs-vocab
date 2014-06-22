@@ -17,7 +17,7 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
     $scope.sura_id = $routeParams.sura_id;
     $scope.fiveCardsToLearn = null;
     $scope.cardsJustLearned = learningFactory.cardsJustLearned;
-    $scope.learningStepsStatistics = learningFactory.getLearningStepStatistic(5);
+    $scope.learningStepsStatistics = learningFactory.getLearningStepStatistic(learningFactory.getNbCardsToLearnInStep($routeParams.sura_id));
 
     cardFactory.getCardBySuraIdAndCardId($routeParams.sura_id, $routeParams.card_id).then(function(promise){
         $scope.word_arabic = promise.word;
@@ -25,13 +25,12 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
         $scope.name_sura = promise.sura_name_phonetic;
         if(learningFactory.modeLearningSura)
         {
-            $scope.fiveCardsToLearn = learningFactory.get5CardsToLearn($routeParams.sura_id);
+            $scope.fiveCardsToLearn = learningFactory.get5CardsToLearn($routeParams.sura_id,
+                learningFactory.getNbCardsToLearnInStep($routeParams.sura_id));
             if(cardFactory.stepCardToLearn == null)
                 cardFactory.stepCardToLearn = 0;
             else
                 cardFactory.stepCardToLearn++;
-
-            console.log("Etape : "+cardFactory.stepCardToLearn);
         }
 
     });
@@ -43,28 +42,84 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
             cardFactory.modifyPercentage(promise.percentage_sura, promise.sura_id);
             suraFactory.updateSurasReport(promise.statistics_sura, promise.sura_id)
 
+
             // Ici on test si le mode Learning est activé. Si c'est le cas, on va s'assureait de redirigé vers la carte
             // suivante
             if(learningFactory.modeLearningSura)
             {
-                cardJustLearned = learningFactory.cardsToLearn[promise.sura_id].shift();
+                var drapeau = false;
+                var cardJustLearned = learningFactory.cardsToLearn[promise.sura_id].shift();
                 learningFactory.cardsJustLearned.push(cardJustLearned);
-                firstCardToLearn = learningFactory.getFirstCardToLearn(promise.sura_id);
-                if(firstCardToLearn != undefined)
-                {
-                    $location.path("/user/learning/sura/"+$routeParams.sura_id+"/card/"+firstCardToLearn.id);
+                if(learningFactory.getNbCardsToLearnInStep($routeParams.sura_id) < 5){
+                    if(learningFactory.getNbCardsToLearnInStep($routeParams.sura_id) == 0){
+                        drapeau = true;
+                    }
                 }
-            }
+                else if(learningFactory.cardsJustLearned.length == learningFactory.getNbCardsToLearnInStep($routeParams.sura_id)) {
+
+                    drapeau = true;
+                }
+                if(drapeau) {
+                    learningFactory.cardsJustLearned = [];
+                    bootbox.dialog({
+                        message: "<span class='bigger-110'>Félicitation ! Vous venez de travailler <span class=\"red\">5 </span>" +
+                            "Mots ! Que voulez-vous faire à présent ?",
+                        buttons:
+                        {
+                            "success" :
+                            {
+                                "label" : "<i class='ace-icon fa fa-check'></i> Continuer !",
+                                "className" : "btn-block btn-success",
+                                "callback": function() {
+                                    firstCardToLearn = learningFactory.getFirstCardToLearn($scope.sura_id);
+                                    $scope.$apply(function() {
+                                        $location.path("/user/learning/sura/"+$scope.sura_id+"/card/"+firstCardToLearn.id);
+                                    });
+                                }
+                            },
+                            /*"danger" :
+                             {
+                             "label" : "Danger!",
+                             "className" : "btn-sm btn-danger",
+                             "callback": function() {
+                             //Example.show("uh oh, look out!");
+                             }
+                             },*/
+                            "click" :
+                            {
+                                "label" : "Retour vers la sourate <strong> "+$scope.name_sura+"</strong>",
+                                "className" : "btn-block btn-primary",
+                                "callback": function() {
+                                    $scope.redirectToSura($scope.sura_id);
+                                }
+                            }
+                        }
+                    });
+                }
+                else
+                {
+                    firstCardToLearn = learningFactory.getFirstCardToLearn(promise.sura_id);
+                    if(firstCardToLearn != undefined)
+                    {
+                        $location.path("/user/learning/sura/"+$routeParams.sura_id+"/card/"+firstCardToLearn.id);
+                    }
+                }
+                }
+
             else
             {
                 cardFactory.deleteCardToLearn(card_id, promise.sura_id);
                 $location.path("/user/suras/"+$scope.sura_id+"/cards");
             }
+
+            console.log(learningFactory.cardsToLearn);
         });
     }
 
-    $scope.returnLearningSuraCtrl = function(){
-        //$location.path("/user/learning/sura/"+90);
+    $scope.redirectToSura = function(sura_id){
+        $scope.$apply( function() {
+            $location.path("user/suras/"+sura_id+"/cards");
+        });
     }
 
     $scope.startLearning = function(sura_id){
@@ -154,13 +209,23 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
     });
 
     $scope.$watch('cardsJustLearned', function(cardsJustLearned){
-        if(cardsJustLearned.length == 4)
-            learningFactory.cardsJustLearned = [];
+
     })
 
     // Initialisation du plugin JS
     $scope.$on('$viewContentLoaded', function(){
 
+        /*$.gritter.add({
+            title: 'Bravo !',
+            text: 'Plus que 3 mots',
+            image: 'assets/avatars/avatar5.png',
+            sticky: false,
+            time: 1500,
+            class_name: ''
+        });
+
+       // $("#gritter-notice-wrapper").css('left',"100px");
+        $("#gritter-notice-wrapper").css('top',"60px");*/
 
         /*var $validation = false;
         $('#fuelux-wizard')

@@ -26,20 +26,34 @@
       <file leaf-file-name="learning_card_c.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/controllers/learning_card_c.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-25.035715" vertical-offset="519" max-vertical-offset="1480">
-              <caret line="156" column="39" selection-start-line="156" selection-start-column="39" selection-end-line="156" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3820">
+              <caret line="27" column="62" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
               <folding>
-                <element signature="e#1021#1569#0" expanded="false" />
-                <element signature="e#1638#2892#0" expanded="false" />
-                <element signature="e#2940#3000#0" expanded="false" />
-                <element signature="e#3096#3450#0" expanded="false" />
-                <element signature="e#3933#4068#0" expanded="false" />
-                <element signature="e#4102#4165#0" expanded="false" />
-                <element signature="e#4203#4322#0" expanded="false" />
-                <element signature="e#4369#4479#0" expanded="false" />
-                <element signature="e#4525#4889#0" expanded="false" />
-                <element signature="e#4930#5319#0" expanded="false" />
-                <element signature="e#5571#6542#0" expanded="false" />
+                <element signature="e#5599#5714#0" expanded="false" />
+                <element signature="e#5760#5768#0" expanded="false" />
+                <element signature="e#5810#6164#0" expanded="false" />
+                <element signature="e#6202#6605#0" expanded="false" />
+                <element signature="e#6647#6782#0" expanded="false" />
+                <element signature="e#6816#6879#0" expanded="false" />
+                <element signature="e#6917#7036#0" expanded="false" />
+                <element signature="e#7083#7193#0" expanded="false" />
+                <element signature="e#7239#7603#0" expanded="false" />
+                <element signature="e#7644#8033#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="learning_factory.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/services/learning_factory.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.2640264" vertical-offset="0" max-vertical-offset="1320">
+              <caret line="41" column="63" selection-start-line="41" selection-start-column="63" selection-end-line="41" selection-end-column="63" />
+              <folding>
+                <element signature="e#206#451#0" expanded="false" />
+                <element signature="e#496#1050#0" expanded="false" />
+                <element signature="e#1099#1285#0" expanded="false" />
+                <element signature="e#2689#2743#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -48,41 +62,30 @@
       <file leaf-file-name="user_cards_c.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/controllers/user_cards_c.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1260">
+            <state vertical-scroll-proportion="0.0" vertical-offset="140" max-vertical-offset="1680">
               <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-              <folding>
-                <element signature="e#858#968#0" expanded="false" />
-                <element signature="e#1009#1119#0" expanded="false" />
-                <element signature="e#1165#1417#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="learning_card.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="learning_card.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/user/learning_card.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35409456" vertical-offset="3713" max-vertical-offset="4960">
-              <caret line="201" column="92" selection-start-line="201" selection-start-column="92" selection-end-line="201" selection-end-column="92" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-9.896552" vertical-offset="3773" max-vertical-offset="5000">
+              <caret line="203" column="21" selection-start-line="203" selection-start-column="21" selection-end-line="203" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="learning_factory.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/services/learning_factory.js">
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
-              <caret line="3" column="24" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="380" max-vertical-offset="19300">
+              <caret line="48" column="17" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
               <folding>
-                <element signature="e#236#481#0" expanded="false" />
-                <element signature="e#296#471#0" expanded="false" />
-                <element signature="e#526#1080#0" expanded="false" />
-                <element signature="e#1129#1315#0" expanded="false" />
-                <element signature="e#1361#2275#0" expanded="false" />
-                <element signature="e#2337#2412#0" expanded="false" />
+                <marker date="1403432493251" expanded="true" signature="22120:22234" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -122,12 +125,12 @@
         <option value="$PROJECT_DIR$/js/services/sura_factory.js" />
         <option value="$PROJECT_DIR$/css/script.css" />
         <option value="$PROJECT_DIR$/templates/user/cards.html" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/services/card_factory.js" />
-        <option value="$PROJECT_DIR$/js/services/learning_factory.js" />
-        <option value="$PROJECT_DIR$/js/controllers/learning_card_c.js" />
         <option value="$PROJECT_DIR$/js/controllers/user_cards_c.js" />
         <option value="$PROJECT_DIR$/templates/user/learning_card.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/controllers/learning_card_c.js" />
+        <option value="$PROJECT_DIR$/js/services/learning_factory.js" />
       </list>
     </option>
   </component>
@@ -163,6 +166,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -309,9 +313,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="angularjs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="angularjs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -388,7 +405,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-5" y="-5" width="1930" height="1050" extended-state="6" />
+    <frame x="-5" y="-5" width="1930" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -428,17 +445,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/style.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="120">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/controllers/user_cards_c.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="440" max-vertical-offset="820">
@@ -723,7 +733,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5797101" vertical-offset="0" max-vertical-offset="897">
           <caret line="26" column="81" selection-start-line="26" selection-start-column="81" selection-end-line="26" selection-end-column="81" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -731,7 +740,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.84392416" vertical-offset="423" max-vertical-offset="1400">
           <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -739,17 +747,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="380" max-vertical-offset="1400">
           <caret line="19" column="25" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.241379" vertical-offset="0" max-vertical-offset="19280">
-          <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
-          <folding>
-            <marker date="1403344807363" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -757,7 +754,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0660066" vertical-offset="0" max-vertical-offset="1020">
           <caret line="3" column="28" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -779,37 +775,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/services/learning_factory.js">
+    <entry file="file://$PROJECT_DIR$/assets/css/jquery.gritter.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
-          <caret line="3" column="24" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="24" />
-          <folding>
-            <element signature="e#236#481#0" expanded="false" />
-            <element signature="e#296#471#0" expanded="false" />
-            <element signature="e#526#1080#0" expanded="false" />
-            <element signature="e#1129#1315#0" expanded="false" />
-            <element signature="e#1361#2275#0" expanded="false" />
-            <element signature="e#2337#2412#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2140">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/learning_card_c.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-25.035715" vertical-offset="519" max-vertical-offset="1480">
-          <caret line="156" column="39" selection-start-line="156" selection-start-column="39" selection-end-line="156" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="380" max-vertical-offset="19300">
+          <caret line="48" column="17" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
           <folding>
-            <element signature="e#1021#1569#0" expanded="false" />
-            <element signature="e#1638#2892#0" expanded="false" />
-            <element signature="e#2940#3000#0" expanded="false" />
-            <element signature="e#3096#3450#0" expanded="false" />
-            <element signature="e#3933#4068#0" expanded="false" />
-            <element signature="e#4102#4165#0" expanded="false" />
-            <element signature="e#4203#4322#0" expanded="false" />
-            <element signature="e#4369#4479#0" expanded="false" />
-            <element signature="e#4525#4889#0" expanded="false" />
-            <element signature="e#4930#5319#0" expanded="false" />
-            <element signature="e#5571#6542#0" expanded="false" />
+            <marker date="1403432493251" expanded="true" signature="22120:22234" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -818,20 +796,46 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1260">
           <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-          <folding>
-            <element signature="e#858#968#0" expanded="false" />
-            <element signature="e#1009#1119#0" expanded="false" />
-            <element signature="e#1165#1417#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/user/learning_card.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35409456" vertical-offset="3713" max-vertical-offset="4960">
-          <caret line="201" column="92" selection-start-line="201" selection-start-column="92" selection-end-line="201" selection-end-column="92" />
+        <state vertical-scroll-proportion="-9.896552" vertical-offset="3773" max-vertical-offset="5000">
+          <caret line="203" column="21" selection-start-line="203" selection-start-column="21" selection-end-line="203" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/learning_card_c.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3820">
+          <caret line="27" column="62" selection-start-line="27" selection-start-column="62" selection-end-line="27" selection-end-column="62" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
+            <element signature="e#5599#5714#0" expanded="false" />
+            <element signature="e#5760#5768#0" expanded="false" />
+            <element signature="e#5810#6164#0" expanded="false" />
+            <element signature="e#6202#6605#0" expanded="false" />
+            <element signature="e#6647#6782#0" expanded="false" />
+            <element signature="e#6816#6879#0" expanded="false" />
+            <element signature="e#6917#7036#0" expanded="false" />
+            <element signature="e#7083#7193#0" expanded="false" />
+            <element signature="e#7239#7603#0" expanded="false" />
+            <element signature="e#7644#8033#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services/learning_factory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2640264" vertical-offset="0" max-vertical-offset="1320">
+          <caret line="41" column="63" selection-start-line="41" selection-start-column="63" selection-end-line="41" selection-end-column="63" />
+          <folding>
+            <element signature="e#206#451#0" expanded="false" />
+            <element signature="e#496#1050#0" expanded="false" />
+            <element signature="e#1099#1285#0" expanded="false" />
+            <element signature="e#2689#2743#0" expanded="false" />
           </folding>
         </state>
       </provider>

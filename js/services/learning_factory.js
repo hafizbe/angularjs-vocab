@@ -1,6 +1,5 @@
 app.factory('learningFactory', function(cardFactory){
     var factory = {
-        fiveCardsToLearn: [],
         cardsJustLearned: [],
         cardsToLearn: [],
         modeLearningSura: false,
@@ -36,8 +35,13 @@ app.factory('learningFactory', function(cardFactory){
                 return factory.cardsToLearn[sura_id][0];
             }
         },
-        get5CardsToLearn : function(sura_id){
-            var numberCardsToLearn =  5 - factory.cardsJustLearned.length;
+        get5CardsToLearn : function(sura_id, nbCardsToLearnByStep){
+            console.log("Nombre de cartes à apprendre : "+ nbCardsToLearnByStep )
+
+            if(nbCardsToLearnByStep < 5)
+                var numberCardsToLearn =  nbCardsToLearnByStep;
+            else
+                var numberCardsToLearn =  nbCardsToLearnByStep - factory.cardsJustLearned.length;
 
             if(factory.cardsToLearn[sura_id] != undefined){
                 tabCardsToLearn = [];
@@ -65,7 +69,21 @@ app.factory('learningFactory', function(cardFactory){
              }*/
         },
         getLearningStepStatistic : function (nbCardsLearned){
-            return (factory.cardsJustLearned.length * 100) / 5;
+            return (factory.cardsJustLearned.length * 100) / nbCardsLearned;
+        },
+        clearCardsJustLearned : function(){
+            factory.cardsJustLearned = [];
+        },
+        getNbCardsToLearnInStep : function(sura_id){
+            var nb = null;
+            if(factory.cardsToLearn[sura_id] != undefined)
+            {
+                if(factory.cardsToLearn[sura_id].length < 5)
+                    nb = factory.cardsToLearn[sura_id].length;
+                else
+                    nb = 5;
+            }
+            return nb;
         }
     };
 
