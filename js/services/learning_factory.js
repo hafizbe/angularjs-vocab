@@ -1,7 +1,9 @@
 app.factory('learningFactory', function(cardFactory){
     var factory = {
+        cardsToLearnStep: [],
         cardsJustLearned: [],
         cardsToLearn: [],
+
         modeLearningSura: false,
         hasCardsToLearn : function(sura_id){
             if(cardFactory.allCards[sura_id] != undefined){
@@ -36,7 +38,6 @@ app.factory('learningFactory', function(cardFactory){
             }
         },
         get5CardsToLearn : function(sura_id, nbCardsToLearnByStep){
-            console.log("Nombre de cartes à apprendre : "+ nbCardsToLearnByStep )
 
             if(nbCardsToLearnByStep < 5)
                 var numberCardsToLearn =  nbCardsToLearnByStep;
@@ -48,7 +49,6 @@ app.factory('learningFactory', function(cardFactory){
                 for(var i = 0 ; i < numberCardsToLearn ; i++){
                     tabCardsToLearn.push(factory.cardsToLearn[sura_id][i]);
                 }
-                console.log()
                 return tabCardsToLearn;
             }
 
@@ -84,6 +84,43 @@ app.factory('learningFactory', function(cardFactory){
                     nb = 5;
             }
             return nb;
+        },
+        getCardsToLearnStep : function(nbCardsByStep, sura_id){
+            if(factory.cardsToLearn[sura_id] != undefined){
+                if(factory.cardsToLearnStep.length == 0 || factory.learningStepFinished())
+                {
+                    factory.cardsToLearnStep = [];
+                    for(var i = 0 ; i < nbCardsByStep ; i++)
+                    {
+                        factory.cardsToLearnStep.push(factory.cardsToLearn[sura_id][i]);
+                        factory.cardsToLearnStep[i].state_learning = false;
+                    }
+                }
+            }
+            return factory.cardsToLearnStep;
+
+        },
+        learningStepFinished : function(){
+            var finished = false;
+            var nb_step_finished = 0;
+
+            for(var i = 0; i < factory.cardsToLearnStep.length ; i ++){
+                if(factory.cardsToLearnStep[i].state_learning)
+                    nb_step_finished++;
+            }
+
+            if(nb_step_finished == factory.cardsToLearnStep.length)
+                finished = true;
+
+            return finished;
+        },
+        setStepToFalse : function(){
+            for(var i = 0; i < factory.cardsToLearnStep.length ; i ++){
+                if(!factory.cardsToLearnStep[i].state_learning){
+                    factory.cardsToLearnStep[i].state_learning = true;
+                    break;
+                }
+            }
         }
     };
 

@@ -1,7 +1,7 @@
 app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route','$location','cardFactory',
-    'interrogationFactory','suraFactory','learningFactory',
+    'interrogationFactory','suraFactory','learningFactory','audioFactory',
     function($scope, cardService, $routeParams,$route, $location, cardFactory, interrogationFactory,
-             suraFactory, learningFactory) {
+             suraFactory, learningFactory, audioFactory) {
     $scope.cardsToWork = [];
     $scope.disableBtnBack = true;
     $scope.disableBtnNext = false;
@@ -9,6 +9,8 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
     $scope.steps_selected = [false,false,false,false];
     $scope.response = false;
     $scope.step3_show = false;
+    $scope.soundLoaded = false;
+
 
     $scope.word_arabic = null;
     $scope.word_traducted = null;
@@ -25,15 +27,21 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
         $scope.name_sura = promise.sura_name_phonetic;
         if(learningFactory.modeLearningSura)
         {
-            $scope.fiveCardsToLearn = learningFactory.get5CardsToLearn($routeParams.sura_id,
-                learningFactory.getNbCardsToLearnInStep($routeParams.sura_id));
+            $scope.fiveCardsToLearn = learningFactory.getCardsToLearnStep(
+                learningFactory.getNbCardsToLearnInStep($routeParams.sura_id),promise.sura_id);
+
+            console.log($scope.fiveCardsToLearn);
+
             if(cardFactory.stepCardToLearn == null)
                 cardFactory.stepCardToLearn = 0;
             else
                 cardFactory.stepCardToLearn++;
         }
 
+
+
     });
+
 
     $scope.createInterrogation = function(card_id, response)
     {
@@ -41,28 +49,19 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
             cardFactory.modifyResponseCardAndDate(promise.sura_id, card_id, promise.response, promise.date_response);
             cardFactory.modifyPercentage(promise.percentage_sura, promise.sura_id);
             suraFactory.updateSurasReport(promise.statistics_sura, promise.sura_id)
+            learningFactory.setStepToFalse();
 
 
             // Ici on test si le mode Learning est activé. Si c'est le cas, on va s'assureait de redirigé vers la carte
             // suivante
-            if(learningFactory.modeLearningSura)
-            {
-                var drapeau = false;
-                var cardJustLearned = learningFactory.cardsToLearn[promise.sura_id].shift();
-                learningFactory.cardsJustLearned.push(cardJustLearned);
-                if(learningFactory.getNbCardsToLearnInStep($routeParams.sura_id) < 5){
-                    if(learningFactory.getNbCardsToLearnInStep($routeParams.sura_id) == 0){
-                        drapeau = true;
-                    }
-                }
-                else if(learningFactory.cardsJustLearned.length == learningFactory.getNbCardsToLearnInStep($routeParams.sura_id)) {
-
-                    drapeau = true;
-                }
-                if(drapeau) {
-                    learningFactory.cardsJustLearned = [];
+            if(learningFactory.modeLearningSura) {
+                learningFactory.cardsToLearn[promise.sura_id].shift();
+                firstCardToLearn = learningFactory.getFirstCardToLearn(promise.sura_id);
+                if(learningFactory.learningStepFinished())
+                {
                     bootbox.dialog({
-                        message: "<span class='bigger-110'>Félicitation ! Vous venez de travailler <span class=\"red\">5 </span>" +
+                        message: "<span class='bigger-110'>Félicitation ! Vous venez de travailler " +
+                            "<span class=\"red\">"+learningFactory.cardsToLearnStep.length+" </span>" +
                             "Mots ! Que voulez-vous faire à présent ?",
                         buttons:
                         {
@@ -72,19 +71,14 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
                                 "className" : "btn-block btn-success",
                                 "callback": function() {
                                     firstCardToLearn = learningFactory.getFirstCardToLearn($scope.sura_id);
-                                    $scope.$apply(function() {
-                                        $location.path("/user/learning/sura/"+$scope.sura_id+"/card/"+firstCardToLearn.id);
-                                    });
+                                    if(firstCardToLearn != undefined)
+                                    {
+                                        $scope.$apply(function() {
+                                            $location.path("/user/learning/sura/"+$scope.sura_id+"/card/"+firstCardToLearn.id);
+                                        });
+                                    }
                                 }
                             },
-                            /*"danger" :
-                             {
-                             "label" : "Danger!",
-                             "className" : "btn-sm btn-danger",
-                             "callback": function() {
-                             //Example.show("uh oh, look out!");
-                             }
-                             },*/
                             "click" :
                             {
                                 "label" : "Retour vers la sourate <strong> "+$scope.name_sura+"</strong>",
@@ -98,21 +92,56 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
                 }
                 else
                 {
-                    firstCardToLearn = learningFactory.getFirstCardToLearn(promise.sura_id);
                     if(firstCardToLearn != undefined)
                     {
-                        $location.path("/user/learning/sura/"+$routeParams.sura_id+"/card/"+firstCardToLearn.id);
+                        $location.path("/user/learning/sura/"+promise.sura_id+"/card/"+firstCardToLearn.id);
                     }
                 }
-                }
 
+
+
+                /*
+
+
+
+
+
+
+
+
+
+                 var drapeau = false;
+                 var cardJustLearned = learningFactory.cardsToLearn[promise.sura_id].shift();
+                 learningFactory.cardsJustLearned.push(cardJustLearned);
+                 if(learningFactory.getNbCardsToLearnInStep($routeParams.sura_id) < 5){
+                 if(learningFactory.getNbCardsToLearnInStep($routeParams.sura_id) == 0){
+                 drapeau = true;
+                 }
+                 }
+                 else if(learningFactory.cardsJustLearned.length == learningFactory.getNbCardsToLearnInStep($routeParams.sura_id)) {
+
+                 drapeau = true;
+                 }
+                 if(drapeau) {
+                 learningFactory.cardsJustLearned = [];
+
+                 }
+                 else
+                 {
+                 firstCardToLearn = learningFactory.getFirstCardToLearn(promise.sura_id);
+                 if(firstCardToLearn != undefined)
+                 {
+                 $location.path("/user/learning/sura/"+$routeParams.sura_id+"/card/"+firstCardToLearn.id);
+                 }
+                 }
+                 }*/
+            }
             else
             {
                 cardFactory.deleteCardToLearn(card_id, promise.sura_id);
                 $location.path("/user/suras/"+$scope.sura_id+"/cards");
             }
 
-            console.log(learningFactory.cardsToLearn);
         });
     }
 
@@ -120,7 +149,7 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
         $scope.$apply( function() {
             $location.path("user/suras/"+sura_id+"/cards");
         });
-    }
+    };
 
     $scope.startLearning = function(sura_id){
 
@@ -133,7 +162,7 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
         cardFactory.stepCardToLearn--;
 
         $route.reload();
-    }
+    };
 
     $scope.aRepondu = function(step){
 
@@ -146,34 +175,33 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
         else
             $scope.step3_show = true;
         $scope.response = true;
-    }
+    };
 
     $scope.detectActive = function(step){
         if($scope.step == step)
             return "active";
         else if($scope.step > step)
             return "complete";
-    }
+    };
 
     $scope.nextStep = function(){
         $scope.step++;
         $scope.response = false;
-    }
+    };
 
     $scope.previousStep = function(){
         $scope.step--;
         $scope.steps_selected[$scope.step - 1] = false;
         $scope.response = false;
-    }
+    };
 
-    $scope.switchToStep = function(step)
-    {   
+    $scope.switchToStep = function(step){
         if($scope.step != 4)
         {
             // TODO //
         }
         $scope.step = step;
-    }
+    };
 
     $scope.detectClassStep = function(index){
         if(cardFactory.stepCardToLearn == index)
@@ -188,17 +216,21 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
         {
             return "fa fa-check-square-o green";
         }
-    }
+    };
 
     $scope.$watch('step',function(step){
         if(step == 1)
         {
             $scope.disableBtnBack = true;
             $scope.disableBtnNext = false;
+            $scope.playCard();
         }
         else if(step == 4){
             $scope.disableBtnNext = true;
             $scope.disableBtnBack = false;
+        }
+        else if(step == 3){
+            $scope.playCard();
         }
         else
         {
@@ -208,9 +240,32 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
             
     });
 
-    $scope.$watch('cardsJustLearned', function(cardsJustLearned){
+    $scope.playCard = function(){
+        AWS.config.update({accessKeyId: audioFactory.accessKeyId, secretAccessKey: audioFactory.secretAccessKey});
+        var params = {
+            Bucket: 'word-audio', // required
+            Key: ''+$routeParams.sura_id+'/'+$routeParams.card_id+'.mp3'
+        }
+        new AWS.S3().getSignedUrl('getObject', params, function (err, url) {
+            // TODO : Faire en sorte que si le son est déjà créer, ne pas le re-télécharger
 
-    })
+            
+            var mySound = soundManager.createSound({
+                url: url,
+                id: $routeParams.card_id
+            });
+            mySound.play({
+                onload: function() {
+                    $scope.$apply(function() {
+                        $scope.soundLoaded = true;
+                    });
+                }
+            });
+        });
+    };
+
+
+
 
     // Initialisation du plugin JS
     $scope.$on('$viewContentLoaded', function(){

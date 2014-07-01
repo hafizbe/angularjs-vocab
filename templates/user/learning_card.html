@@ -10,7 +10,8 @@
 
         <i class="ace-icon fa fa-check green"></i>
 
-        Vous avez la possibilité de sauter les étapes en cliquant sur les numéros ci-dessous. Ne sautez les étapes <strong>que si vous connaissez parfaitement le mot</strong>
+        Vous avez la possibilité de sauter les étapes en cliquant sur les numéros ci-dessous. Ne sautez les étapes
+        <strong>que si vous connaissez parfaitement le mot</strong>
 
     </div>
     <div id="fuelux-wizard" data-target="#step-container">
@@ -46,6 +47,9 @@
                                 <i class="ace-icon fa fa-signal"></i>
                                 Word in Arabic
                             </h5>
+                            <div class="widget-toolbar">
+                                <span ng-show="!soundLoaded" class="badge badge-warning">Chargement du son</span>
+                            </div>
                         </div>
                         <div class="widget-body">
                             <div class="widget-main ">
@@ -62,7 +66,10 @@
                                 <i class="ace-icon fa fa-signal"></i>
                                 Word in English
                             </h5>
+
                         </div>
+
+
                         <div class="widget-body">
                             <div class="widget-main ">
                                 <p ng-hide="steps_selected[0]"><button ng-click="aRepondu(1)"  class="btn btn-danger btn-block">Voir la réponse</button></p>
@@ -213,13 +220,10 @@
             </div>
 
             <div class="widget-main padding-16">
-                <ul class="list-unstyled spaced2" >
-                    <li ng-repeat="cardStep in cardsJustLearned" class="ar-word-learning-li">
-                        <i class="ace-icon  fa fa-check-square-o  icon-step-learning"></i>
-                        <span class="ar-step-learning">{{cardStep.word}}</span>
-                    </li>
-                    <li ng-repeat="cardStep in fiveCardsToLearn" class="ar-word-learning-li">
-                        <i class="ace-icon fa  fa-square-o  icon-step-learning"></i>
+                <ul  ng-repeat="cardStep in fiveCardsToLearn"  class="list-unstyled spaced2" >
+                    <li class="ar-word-learning-li">
+                        <i ng-class="{'fa-square-o': !cardStep.state_learning, 'fa-check-square-o': cardStep.state_learning}"
+                           class="ace-icon fa  icon-step-learning"></i>
                         <span class="ar-step-learning">{{cardStep.word}}</span>
                     </li>
                     <!--<li class="ar-word-learning-li">
