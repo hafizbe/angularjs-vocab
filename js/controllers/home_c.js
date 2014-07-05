@@ -1,11 +1,16 @@
-app.controller('home_c',['$scope','statisticFactory','$location','$rootScope', function($scope, statisticFactory,
-                                                                                        $location, $rootScope) {
+app.controller('home_c',['$scope','statisticFactory','$location','$rootScope','$cookieStore',
+    function($scope, statisticFactory, $location, $rootScope, $cookieStore) {
     $rootScope.ariane = {
         name : "Accueil",
         histo : []
     };
 
-    statisticFactory.getStatisticsHome().then(function(promise){
+    //da34a57ce3e0582f56459a23bb8fe3d7
+    //$cookieStore.put('token','adel');
+
+
+
+    statisticFactory.getStatisticsHome($cookieStore.get('token')).then(function(promise){
         $scope.cardsToReviseCount = promise.cards_to_revise.length;
         $scope.percentageQuran = promise.percentage_total;
 

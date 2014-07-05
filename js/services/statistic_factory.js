@@ -13,7 +13,7 @@ app.factory('statisticFactory', function($http, $q){
 
             factory.cards_to_revise.shift();
         },
-        getStatisticsHome : function(){
+        getStatisticsHome : function(token){
             var deferred = $q.defer();
             //console.log(factory.cards_to_revise)
             if(factory.cards_to_revise.length > 0)
@@ -24,7 +24,7 @@ app.factory('statisticFactory', function($http, $q){
             else
             {
                 $http({method:'GET', url:'http://vocab-api.herokuapp.com/api/v1/users/statistics_home?' +
-                    'token=da34a57ce3e0582f56459a23bb8fe3d7'})
+                    'token='+token})
                     .success(function (response, status, headers, config) {
                         //console.log(response)
                         factory.cards_to_revise = response.cards_to_revise;

@@ -1,6 +1,7 @@
-app.controller('sura_c', ['$scope','userService','suraFactory','$rootScope', function($scope, userService, suraFactory,$rootScope) {
+app.controller('sura_c', ['$scope','userService','suraFactory','$rootScope','$cookieStore',
+    function($scope, userService, suraFactory,$rootScope, $cookieStore) {
 
-
+    alert($cookieStore.get("token"));
     $rootScope.ariane = {
         name : "Sourates",
         histo : [{

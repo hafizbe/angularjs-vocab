@@ -1,4 +1,4 @@
-var app = angular.module('nomAppli', ['ngRoute','ngAnimate']);
+var app = angular.module('nomAppli', ['ngRoute','ngAnimate', 'ngCookies']);
 
 /*app.config(['$httpProvider', function ($httpProvider) {
   //Reset headers to avoid OPTIONS request (aka preflight)
@@ -8,7 +8,8 @@ var app = angular.module('nomAppli', ['ngRoute','ngAnimate']);
   $httpProvider.defaults.headers.patch = {};
 }]);*/
 // register the interceptor as a service
-app.factory('HttpInterceptor', ['$q', '$rootScope', function($q, $rootScope) {
+app.factory('HttpInterceptor', ['$q', '$rootScope','$location', 
+    function($q, $rootScope, $location) {
        return {
             // On request success
             request : function(config) {
@@ -25,7 +26,6 @@ app.factory('HttpInterceptor', ['$q', '$rootScope', function($q, $rootScope) {
 
             // On response success
             response : function(response) {
-                console.log("la réponse vient d'être récue")
                 //console.log(response); // Contains the data from the response.
                 // Return the response or promise.
                 return response || $q.when(response);
@@ -36,7 +36,7 @@ app.factory('HttpInterceptor', ['$q', '$rootScope', function($q, $rootScope) {
                 //console.log(rejection); // Contains the data about the error.
                 //Check whether the intercept param is set in the config array. 
                 //If the intercept param is missing or set to true, we display a modal containing the error
-                alert("RESPONSE ERROR");
+                $location.path('/login')
                 // Return the promise rejection.
                 return $q.reject(rejection);
             }
@@ -67,9 +67,12 @@ app.config(['$routeProvider','$httpProvider',
             }).when('/user/revision/card/:card_id' , {
                 templateUrl: "templates/revision/revision_card.html",
                 controller: "revision_c"
-            })
+            }).when('/error404' , {
+                templateUrl: "templates/error404.html",
+                controller: "simple_c"
+            }).otherwise({redirectTo: '/error404'});
 
-            //$httpProvider.interceptors.push('HttpInterceptor');
+            $httpProvider.interceptors.push('HttpInterceptor');
 
         $httpProvider.defaults.headers.patch = {
             'Content-Type': 'application/json;charset=utf-8'
