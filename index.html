@@ -25,6 +25,7 @@
     <script src="js/services/statistic_factory.js"></script>
     <script src="js/services/learning_factory.js"></script>
     <script src="js/services/audio_factory.js"></script>
+    <script src="js/directives/filAriane.js"></script>
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.0.4.min.js"></script>
 
     <script src="js/soundmanager2.js"></script>
@@ -500,13 +501,7 @@
         try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
     </script>
 
-    <ul class="breadcrumb">
-        <li>
-            <i class="ace-icon fa fa-home home-icon"></i>
-            <a href="#">Home</a>
-        </li>
-        <li class="active">Dashboard</li>
-    </ul><!-- /.breadcrumb -->
+    <fil-ariane></fil-ariane>
 
     <!-- #section:basics/content.searchbox -->
     <div class="nav-search" id="nav-search">

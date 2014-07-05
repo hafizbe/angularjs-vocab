@@ -9,15 +9,15 @@
 
         <div class="col-sm-4 home_block fader" ng-show="isLoaded()">
             <div class="home_block_text">
-                <button ng-click="redirectToRevisionCard()" class="btn btn-success btn-block">Start the revision</button>
-                <p><span class="number-green">{{cardsToReviseCount}}</span> words to revise today</p>
+                <button ng-click="redirectToRevisionCard()" class="btn btn-success btn-block">Commencer la révision</button>
+                <p><span class="number-green">{{cardsToReviseCount}}</span> mots à réviser pour aujourd'hui</p>
             </div>
 
         </div>
 
         <div class="col-sm-4 home_block">
             <div class="home_block_text">
-                <button class="btn btn-danger btn-block">Learn new words</button>
+                <button class="btn btn-danger btn-block">Apprendre de nouveaux mots</button>
                 <p>Vous connaissez déjà <span class="number-red">43</span> mots répartis sur <span class="number-red">10</span> sourates.</p>
 
 
@@ -26,7 +26,7 @@
         </div>
         <div class="col-sm-4 home_block">
             <div class="home_block_text">
-                <button class="btn btn-warning btn-block">Show statistics</button>
+                <button class="btn btn-warning btn-block">Voir les statistiques</button>
                 <p>Vous comprenez <span class="number-yellow">{{percentageQuran}}%</span> du coran.</p>
                 <div class="progress progress-small progress-striped active">
                     <div class="progress-bar progress-bar-warning" style="width: {{percentageQuran}}%;"></div>

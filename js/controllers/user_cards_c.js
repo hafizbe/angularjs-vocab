@@ -1,6 +1,8 @@
-app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFactory','$anchorScroll','$location','learningFactory',
-	function($scope, userService,$routeParams, cardFactory,$anchorScroll, $location, learningFactory) {
-    var view = {};
+app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFactory','$anchorScroll','$location',
+    'learningFactory','$rootScope',
+	function($scope, userService,$routeParams, cardFactory,$anchorScroll, $location, learningFactory, $rootScope) {
+
+        //var view = {};
 
     $anchorScroll();
 	$scope.stats_cards = false;
@@ -10,6 +12,17 @@ app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFacto
 
     cardFactory.getAllCardsBySuraId($routeParams.sura_id).then(function(promise){
 		$scope.stats_cards = promise;
+        $rootScope.ariane = {
+            name : promise.sura_name_phonetic,
+            histo : [
+                {name :"Accueil",
+                    link :"/#"
+                },
+                {name :"Sourates",
+                link :"/user/suras"
+            }]
+        };
+
         //view.loadChart();
 	});
 

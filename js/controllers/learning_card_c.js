@@ -1,7 +1,7 @@
 app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route','$location','cardFactory',
-    'interrogationFactory','suraFactory','learningFactory','audioFactory',
+    'interrogationFactory','suraFactory','learningFactory','audioFactory','$rootScope',
     function($scope, cardService, $routeParams,$route, $location, cardFactory, interrogationFactory,
-             suraFactory, learningFactory, audioFactory) {
+             suraFactory, learningFactory, audioFactory,$rootScope) {
     $scope.cardsToWork = [];
     $scope.disableBtnBack = true;
     $scope.disableBtnNext = false;
@@ -23,8 +23,20 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
 
     cardFactory.getCardBySuraIdAndCardId($routeParams.sura_id, $routeParams.card_id).then(function(promise){
         $scope.word_arabic = promise.word;
-        $scope.word_traducted  = promise.english_m;
+        $scope.word_traducted  = promise.fr_m;
         $scope.name_sura = promise.sura_name_phonetic;
+        $rootScope.ariane = {
+            name : promise.word,
+            histo : [
+                {name :"Accueil",
+                    link :"/#"
+                },
+                {name :"Sourates",
+                    link :"/user/suras"
+                },
+                {name :promise.sura_name_phonetic,
+                link : "user/suras/"+$routeParams.sura_id+"/cards"}]
+        };
         if(learningFactory.modeLearningSura)
         {
             $scope.fiveCardsToLearn = learningFactory.getCardsToLearnStep(

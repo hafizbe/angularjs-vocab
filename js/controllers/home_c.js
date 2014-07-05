@@ -1,5 +1,9 @@
-app.controller('home_c',['$scope','statisticFactory','$location', function($scope, statisticFactory,$location) {
-
+app.controller('home_c',['$scope','statisticFactory','$location','$rootScope', function($scope, statisticFactory,
+                                                                                        $location, $rootScope) {
+    $rootScope.ariane = {
+        name : "Accueil",
+        histo : []
+    };
 
     statisticFactory.getStatisticsHome().then(function(promise){
         $scope.cardsToReviseCount = promise.cards_to_revise.length;

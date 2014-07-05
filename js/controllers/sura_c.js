@@ -1,4 +1,13 @@
-app.controller('sura_c', ['$scope','userService','suraFactory', function($scope, userService, suraFactory) {
+app.controller('sura_c', ['$scope','userService','suraFactory','$rootScope', function($scope, userService, suraFactory,$rootScope) {
+
+
+    $rootScope.ariane = {
+        name : "Sourates",
+        histo : [{
+            name :"Accueil",
+            link :"/#"
+        }]
+    };
 
 	$scope.suras = [];
 

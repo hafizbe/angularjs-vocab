@@ -1,6 +1,8 @@
 app.controller('revision_c', ['$scope','statisticFactory', '$routeParams','$route','$location','interrogationFactory',
-    'cardFactory',
-    function($scope, statisticFactory,$routeParams,$route, $location, interrogationFactory,cardFactory) {
+    'cardFactory','$rootScope',
+    function($scope, statisticFactory,$routeParams,$route, $location, interrogationFactory,cardFactory, $rootScope) {
+
+
 
     $scope.show_response = false;
     $scope.card_id = $routeParams.card_id;
@@ -11,6 +13,15 @@ app.controller('revision_c', ['$scope','statisticFactory', '$routeParams','$rout
         $scope.word_arabic = promise.cards_to_revise[0].word;
         $scope.word_traducted  = promise.cards_to_revise[0].english_m;
         $scope.name_sura = promise.cards_to_revise[0].name_sura;
+
+        $rootScope.ariane = {
+            name : "Révision  - "+$scope.name_sura ,
+            histo : [
+                {name :"Accueil",
+                    link :"/#"
+                }
+                ]
+        };
     });
 
     $scope.aRepondu = function(){
