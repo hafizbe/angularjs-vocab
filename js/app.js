@@ -1,5 +1,11 @@
 var app = angular.module('nomAppli', ['ngRoute','ngAnimate', 'ngCookies']);
+app.run(function($rootScope, $cookieStore, $location, $route, $window) {
+    $rootScope.logOut = function() {
+        $cookieStore.remove("token");
+        $window.location.reload();
 
+    };
+});
 /*app.config(['$httpProvider', function ($httpProvider) {
   //Reset headers to avoid OPTIONS request (aka preflight)
   $httpProvider.defaults.headers.common = {};
@@ -13,7 +19,7 @@ app.factory('HttpInterceptor', ['$q', '$rootScope','$location',
        return {
             // On request success
             request : function(config) {
-                console.log(config)
+                //console.log(config)
                 return config || $q.when(config);
             },
 
@@ -67,7 +73,11 @@ app.config(['$routeProvider','$httpProvider',
             }).when('/user/revision/card/:card_id' , {
                 templateUrl: "templates/revision/revision_card.html",
                 controller: "revision_c"
-            }).when('/error404' , {
+            }).when('/login' , {
+                templateUrl: "templates/login.html",
+                controller: "login_c"
+            })
+            .when('/error404' , {
                 templateUrl: "templates/error404.html",
                 controller: "simple_c"
             }).otherwise({redirectTo: '/error404'});
