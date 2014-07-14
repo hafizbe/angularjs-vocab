@@ -1,0 +1,80 @@
+<div class="page-header">
+    <h1>Révision phase</h1>
+</div>
+<h3 class="header smaller lighter green"><i class="fa fa-arrow-circle-o-right fa-3"></i> Sourate : {{name_sura}}</h3>
+<div class="alert alert-block alert-success ng-scope">
+    <button type="button" class="close" data-dismiss="alert">
+        <i class="ace-icon fa fa-times"></i>
+    </button>
+
+    <strong class="red">Courage ! </strong> Il vous reste <strong>{{nb_cards_restantes}}</strong> cartes. Ne vous inquiétez pas, concentrez-vous et Allah vous facilitera !
+
+</div>
+<hr>
+
+<div ng-class="detectActive(1)" class="step-pane" id="step1">
+    <div class="center">
+        <div class="col-sm-6">
+            <div class="widget-box box-cards">
+                <div class="widget-header widget-header-flat widget-header-small">
+                    <h5 class="widget-title">
+                        <i class="ace-icon fa fa-signal"></i>
+                        Word in Arabic
+                    </h5>
+                </div>
+                <div class="widget-body">
+                    <div class="widget-main ">
+                        <p class="card-word-arabic ar-big">{{word_arabic}}</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="widget-box box-cards">
+                <div class="widget-header widget-header-flat widget-header-small">
+                    <h5 class="widget-title">
+                        <i class="ace-icon fa fa-signal"></i>
+                        Word in English
+                    </h5>
+                </div>
+                <div class="widget-body">
+                    <div class="widget-main ">
+                        <p><button ng-hide="show_response" ng-click="aRepondu()"  class="btn btn-danger btn-block">Voir la réponse</button></p>
+                        <p ng-show="show_response" class="card-word-english fader">{{word_traducted}}</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-sm-12 fader top-buffer" ng-show="show_response">
+    <div class="center">
+        <p class="lead">
+            Comment cela s'est passé ?
+        </p>
+        <div class="col-sm-3">
+            <p>
+                <button ng-click="updateRevision(5,card_id)" class="btn btn-success btn-block">Facile</button>
+            </p>
+        </div>
+        <div class="col-sm-3">
+            <p>
+                <button ng-click="updateRevision(3,card_id)" class="btn btn-warning btn-block">Moyen</button>
+            </p>
+        </div>
+        <div class="col-sm-3">
+            <p>
+                <button ng-click="updateRevision(0,card_id)" class="btn btn-danger btn-block">Difficile</button>
+            </p>
+        </div>
+        <div class="col-sm-3">
+            <p>
+                <button class="btn btn-primary btn-block" ng-click="">Je veux recommencer</button>
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,126 @@
+<div class="col-sm-12 fader" ng-show="isLoaded()">
+    <div class="col-sm-12">
+        <h1>Bienvenue sur Quran Vocabulary</h1>
+        <p class="lead">
+            Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
+        </p>
+        <hr>
+    </div>
+
+        <div class="col-sm-4 home_block fader" ng-show="isLoaded()">
+            <div class="home_block_text">
+                <button ng-click="redirectToRevisionCard()" class="btn btn-success btn-block">Commencer la révision</button>
+                <p><span class="number-green">{{cardsToReviseCount}}</span> mots à réviser pour aujourd'hui</p>
+            </div>
+
+        </div>
+
+        <div class="col-sm-4 home_block">
+            <div class="home_block_text">
+                <button class="btn btn-danger btn-block">Apprendre de nouveaux mots</button>
+                <p>Vous connaissez déjà <span class="number-red">43</span> mots répartis sur <span class="number-red">10</span> sourates.</p>
+
+
+            </div>
+
+        </div>
+        <div class="col-sm-4 home_block">
+            <div class="home_block_text">
+                <button class="btn btn-warning btn-block">Voir les statistiques</button>
+                <p>Vous comprenez <span class="number-yellow">{{percentageQuran}}%</span> du coran.</p>
+                <div class="progress progress-small progress-striped active">
+                    <div class="progress-bar progress-bar-warning" style="width: {{percentageQuran}}%;"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+</div>
+
+<div class="col-sm-12 fader" ng-show="isLoaded()">
+
+    <div class="col-sm-4 home_block">
+        <div class="home_block_text">
+
+            <div class="widget-box collapsed">
+                <div class="widget-header widget-header-flat">
+                    <div class="widget-toolbar">
+                        <a href="" data-action="collapse">
+                            <i class="ace-icon fa fa-chevron-down"></i>
+                        </a>
+                    </div>
+                    <h4 class="widget-title smaller">
+                        Comment je le sais ?
+                    </h4>
+                </div>
+
+                <div class="widget-body">
+                    <div class="widget-main">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p>Maecenas a tellus ut dolor ultricies luctus. Ut fringilla, quam a tincidunt feugiat, neque massa dapibus elit, ac ultricies ante diam eget libero. Pellentesque tortor nisl, molestie ut tempus eu, rutrum sit amet elit. Mauris ut massa rutrum, varius lacus vel, rutrum leo. Nunc quis urna blandit, auctor nulla nec, tincidunt purus. Duis et aliquet sem. Pellentesque pellentesque volutpat nibh, ac egestas elit interdum eget. Cras ut semper arcu, at elementum nunc. Integer nec sodales mi, at fringilla orci. Donec pulvinar diam non metus molestie lobortis. Quisque nunc sem, lobortis ultricies pharetra quis, aliquam ut leo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-4 home_block">
+        <div class="widget-box collapsed">
+            <div class="widget-header widget-header-flat">
+                <div class="widget-toolbar">
+                    <a href="" data-action="collapse">
+                        <i class="ace-icon fa fa-chevron-down"></i>
+                    </a>
+                </div>
+                <h4 class="widget-title smaller">
+                    Comment ça marche ?
+                </h4>
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rutrum sodales magna, nec lobortis mi scelerisque sed. Nunc ornare at mi sed ultricies. Donec tempus, ante sed ultricies tincidunt, sem enim sodales tortor, imperdiet ullamcorper mi arcu ut odio. Nullam congue metus at magna facilisis, in tristique risus elementum. Aenean tempor posuere erat, a porttitor dui varius ut. Nunc adipiscing ipsum bibendum ornare volutpat. Praesent consectetur sed orci at ullamcorper. Morbi quam ipsum, eleifend at mi a, consequat scelerisque ipsum. Duis nec nisl non lorem porta hendrerit. Quisque adipiscing, nisi ut luctus pellentesque, ipsum mi sodales lacus, id eleifend nibh elit cursus augue. Duis sit amet justo purus. Donec eleifend nulla justo, a iaculis risus elementum ut.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-4 home_block">
+        <div class="widget-box collapsed">
+            <div class="widget-header widget-header-flat">
+                <div class="widget-toolbar">
+                    <a href="" data-action="collapse">
+                        <i class="ace-icon fa fa-chevron-down"></i>
+                    </a>
+                </div>
+                <h4 class="widget-title smaller">
+                    A définir
+                </h4>
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam rutrum sodales magna, nec lobortis mi scelerisque sed. Nunc ornare at </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<p ng-hide="isLoaded()"><i class="ace-icon fa fa-spinner fa-spin orange bigger-125"></i>  Chargement ...</p>
+

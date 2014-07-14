@@ -1,0 +1,249 @@
+<div class="page-header">
+    <h1>Learning phase</h1>
+</div>
+<h3 class="header smaller lighter green"><i class="fa fa-arrow-circle-o-right fa-3"></i> Sourate : {{name_sura}}</h3>
+<div class="col-sm-9">
+    <div class="alert alert-block alert-success">
+        <button type="button" class="close" data-dismiss="alert">
+            <i class="ace-icon fa fa-times"></i>
+        </button>
+
+        <i class="ace-icon fa fa-check green"></i>
+
+        Vous avez la possibilité de sauter les étapes en cliquant sur les numéros ci-dessous. Ne sautez les étapes
+        <strong>que si vous connaissez parfaitement le mot</strong>
+
+    </div>
+    <div id="fuelux-wizard" data-target="#step-container">
+        <!-- #section:plugins/fuelux.wizard.steps -->
+        <ul class="wizard-steps">
+            <li data-target="#step1" ng-class="detectActive(1)">
+                <span ng-click="switchToStep(1)" class="step">1</span>
+                <span class="title">Arabic <i class="fa fa-long-arrow-right"></i> English</span>
+            </li>
+            <li data-target="#step2" ng-class="detectActive(2)">
+                <span ng-click="switchToStep(2)" class="step">2</span>
+                <span class="title">Arabic <i class="fa fa-long-arrow-left"></i> English</span>
+            </li>
+            <li data-target="#step3" ng-class="detectActive(3)">
+                <span ng-click="switchToStep(3)" class="step">3</span>
+                <span class="title">Arabic <i class="fa fa-long-arrow-right"></i> English</span>
+            </li>
+            <li data-target="#step4" ng-class="detectActive(4)">
+                <span ng-click="switchToStep(4)" class="step">4</span>
+                <span class="title"><i class="fa fa-question-circle"></i> Final Interrogation</span>
+            </li>
+        </ul>
+        <!-- /section:plugins/fuelux.wizard.steps -->
+    </div>
+    <hr>
+    <div class="step-content pos-rel" id="step-container">
+        <div ng-class="detectActive(1)" class="step-pane" id="step1">
+            <div class="center">
+                <div class="col-sm-6">
+                    <div class="widget-box box-cards">
+                        <div class="widget-header widget-header-flat widget-header-small">
+                            <h5 class="widget-title">
+                                <i class="ace-icon fa fa-signal"></i>
+                                Mot en arabe
+                            </h5>
+                            <div class="widget-toolbar">
+                                <span ng-show="!soundLoaded" class="badge badge-warning">Chargement du son</span>
+                            </div>
+                        </div>
+                        <div class="widget-body">
+                            <div class="widget-main ">
+                                <p class="card-word-arabic ar-big">{{word_arabic}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="widget-box box-cards">
+                        <div class="widget-header widget-header-flat widget-header-small">
+                            <h5 class="widget-title">
+                                <i class="ace-icon fa fa-signal"></i>
+                                Mot en français
+                            </h5>
+
+                        </div>
+
+
+                        <div class="widget-body">
+                            <div class="widget-main ">
+                                <p ng-hide="steps_selected[0]"><button ng-click="aRepondu(1)"  class="btn btn-danger btn-block">Voir la réponse</button></p>
+                                <p ng-show="steps_selected[0]" class="card-word-english fader">{{word_traducted}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-class="detectActive(2)" class="step-pane" id="step2">
+            <div class="center">
+
+                <div class="col-sm-6">
+                    <div class="widget-box box-cards">
+                        <div class="widget-header widget-header-flat widget-header-small">
+                            <h5 class="widget-title">
+                                <i class="ace-icon fa fa-signal"></i>
+                                Mot en arabe
+                            </h5>
+                        </div>
+                        <div class="widget-body">
+                            <div class="widget-main ">
+                                <p ng-hide="steps_selected[1]"><button ng-click="aRepondu(2)"  class="btn btn-danger btn-block">Voir la réponse</button></p>
+                                <p ng-show="steps_selected[1]" class="card-word-arabic ar-big fader">{{word_arabic}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="widget-box box-cards">
+                        <div class="widget-header widget-header-flat widget-header-small">
+                            <h5 class="widget-title">
+                                <i class="ace-icon fa fa-signal"></i>
+                                Mot en français
+                            </h5>
+                        </div>
+                        <div class="widget-body">
+                            <div class="widget-main ">
+                                <p class="card-word-english fader">{{word_traducted}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div ng-class="detectActive(3)" class="step-pane" id="step3">
+            <div class="center">
+                <div class="col-sm-6">
+                    <div class="widget-box box-cards">
+                        <div class="widget-header widget-header-flat widget-header-small">
+                            <h5 class="widget-title">
+                                <i class="ace-icon fa fa-signal"></i>
+                                Mot en arabe
+                            </h5>
+                        </div>
+                        <div class="widget-body">
+                            <div class="widget-main ">
+                                <p class="card-word-arabic ar-big">{{word_arabic}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="widget-box box-cards">
+                        <div class="widget-header widget-header-flat widget-header-small">
+                            <h5 class="widget-title">
+                                <i class="ace-icon fa fa-signal"></i>
+                                Mot en français
+                            </h5>
+                        </div>
+                        <div class="widget-body">
+                            <div class="widget-main ">
+                                <p ng-hide="steps_selected[2]"><button ng-click="aRepondu(3)"  class="btn btn-danger btn-block">Voir la réponse</button></p>
+                                <p ng-show="steps_selected[2]" class="card-word-english fader">{{word_traducted}}</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-class="detectActive(4)" class="step-pane" id="step4">
+            <div class="center">
+                <p class="lead">
+                    Comment cela s'est passé ?
+                </p>
+                <div class="col-sm-3">
+                    <p>
+                        <button ng-click="createInterrogation(card_id, 5)" class="btn btn-success btn-block">Facile</button>
+                    </p>
+                </div>
+                <div class="col-sm-3">
+                    <p>
+                        <button ng-click="createInterrogation(card_id, 3)" class="btn btn-warning btn-block">Moyen</button>
+                    </p>
+                </div>
+                <div class="col-sm-3">
+                    <p>
+                        <button ng-click="createInterrogation(card_id, 0)" class="btn btn-danger btn-block">Difficile</button>
+                    </p>
+                </div>
+                <div class="col-sm-3">
+                    <p>
+                        <button class="btn btn-primary btn-block" ng-click="restartLearning()">Je veux recommencer</button>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="wizard-actions">
+        <!-- #section:plugins/fuelux.wizard.buttons -->
+        <!--<button class="btn btn-prev" ng-click="previousStep()" ng-disabled="disableBtnBack">
+        <i class="ace-icon fa fa-arrow-left"></i>
+        Prev
+        </button>-->
+        <button class="btn btn-success btn-next" ng-disabled="disableBtnNext" ng-click="nextStep()" ng-show="step3_show"
+                data-last="Finish">
+            Next
+            <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+        </button>
+        <!-- /section:plugins/fuelux.wizard.buttons -->
+    </div>
+</div>
+<div class="col-sm-3 widget-container-col ui-sortable">
+    <div class="widget-box widget-color-dark">
+        <div class="widget-header">
+            <h5 class="widget-title bigger lighter">Learning Steps</h5>
+
+            <div class="widget-toolbar">
+                <div class="progress progress-mini progress-striped active" style="width:250px;"
+                     data-percent="{{learningStepsStatistics}}%">
+                    <div class="progress-bar progress-bar-danger" style="width:{{learningStepsStatistics}}%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="widget-body">
+            <div class="widget-toolbox">
+
+            </div>
+
+            <div class="widget-main padding-16">
+                <ul  ng-repeat="cardStep in fiveCardsToLearn"  class="list-unstyled spaced2" >
+                    <li class="ar-word-learning-li">
+                        <i ng-class="{'fa-square-o': !cardStep.state_learning, 'fa-check-square-o': cardStep.state_learning}"
+                           class="ace-icon fa  icon-step-learning"></i>
+                        <span class="ar-step-learning">{{cardStep.word}}</span>
+                    </li>
+                    <!--<li class="ar-word-learning-li">
+                        <i class="ace-icon fa fa-check-square-o green icon-step-learning"></i>
+                        <span class="ar-step-learning">{{cardStep.word}}</span>
+                    </li>
+                    <li class="ar-word-learning-li">
+                        <i class="ace-icon fa fa-question-circle orange icon-step-learning"></i>
+                        <span class="ar-step-learning">{{cardStep.word}}</span>
+                    </li>
+                    <li class="ar-word-learning-li">
+                        <i class="ace-icon fa  fa-square-o red icon-step-learning"></i>
+                        <span class="ar-step-learning">وَلَا يُوثِقُ</span>
+                    </li>
+                    <li class="ar-word-learning-li">
+                        <i class="ace-icon fa  fa-square-o red icon-step-learning"></i>
+                        <span class="ar-step-learning">اصْطَنَعْتُكَ</span>
+                    </li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
