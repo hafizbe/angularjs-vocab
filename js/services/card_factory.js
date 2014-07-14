@@ -67,10 +67,10 @@ app.factory('cardFactory', function($http, $q){
         },
 
         // Récupère une carte dans l'api, sans vérifier si elle existe dans notre tableau
-        getCardByIdFromApi : function(card_id){
+        getCardByIdFromApi : function(card_id, token){
             var deferred = $q.defer();
             $http({method:'GET', url:'http://vocab-api.herokuapp.com/api/v1/cards/'+card_id+'?' +
-               'token=da34a57ce3e0582f56459a23bb8fe3d7'})
+               'token='+token})
                .success(function (response, status, headers, config) {
                    deferred.resolve(response);
                })
@@ -81,7 +81,7 @@ app.factory('cardFactory', function($http, $q){
         },
 
         //Récupère toutes les cartes par sura_id
-        getAllCardsBySuraId : function(sura_id){
+        getAllCardsBySuraId : function(sura_id, token){
             var deferred = $q.defer();
             if(factory.allCards[sura_id] != undefined)
             {
@@ -90,7 +90,7 @@ app.factory('cardFactory', function($http, $q){
             else
             {
                 $http({method:'GET', url:'http://vocab-api.herokuapp.com/api/v1/users/'+
-                    'cards_by_sura?sura_id='+sura_id+'&token=da34a57ce3e0582f56459a23bb8fe3d7'})
+                    'cards_by_sura?sura_id='+sura_id+'&token='+token})
                     .success(function (response, status, headers, config) {
                         factory.allCards[sura_id] = response;
                         // TODO ! Faire un traitement qui stock toutes les cartes non travaillées dans cardsToWork

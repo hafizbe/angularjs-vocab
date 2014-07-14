@@ -1,6 +1,6 @@
 app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFactory','$anchorScroll','$location',
-    'learningFactory','$rootScope',
-	function($scope, userService,$routeParams, cardFactory,$anchorScroll, $location, learningFactory, $rootScope) {
+    'learningFactory','$rootScope','$cookieStore',
+	function($scope, userService,$routeParams, cardFactory,$anchorScroll, $location, learningFactory, $rootScope, $cookieStore) {
 
         //var view = {};
 
@@ -10,7 +10,7 @@ app.controller('user_cards_c', ['$scope','userService','$routeParams','cardFacto
     learningFactory.cardsToLearnStep = [];
     //cardFactory.fiveCardsToLearn[$routeParams.sura_id] = [];
 
-    cardFactory.getAllCardsBySuraId($routeParams.sura_id).then(function(promise){
+    cardFactory.getAllCardsBySuraId($routeParams.sura_id, $cookieStore.get('token')).then(function(promise){
 		$scope.stats_cards = promise;
         $rootScope.ariane = {
             name : promise.sura_name_phonetic,

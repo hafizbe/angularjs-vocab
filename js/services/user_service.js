@@ -4,9 +4,9 @@ app.service("userService", ["$http",
         this.cardsToWorks = "Adel";
 
 
-		this.getAllCards = function(){
+		this.getAllCards = function(token){
 			var promise = $http({method:'GET', url:'http://vocab-api.herokuapp.com/api/v1/users/cards?' +
-                'token=da34a57ce3e0582f56459a23bb8fe3d7&sura_id=1'})
+                'token='+token+'&sura_id=1'})
 				.success(function (response, status, headers, config) {
                     
 					return response;
@@ -19,9 +19,9 @@ app.service("userService", ["$http",
 		}
 
 
-        this.getCardsToWorkBySuraId = function(sura_id){
+        this.getCardsToWorkBySuraId = function(sura_id, token){
                 var promise = $http({method:'GET', url:'http://vocab-api.herokuapp.com/api/v1/users/cards_to_work/' +
-                    sura_id+'?token=da34a57ce3e0582f56459a23bb8fe3d7'})
+                    sura_id+'?token='+token})
                 .success(function (response, status, headers, config) {
                     return response;
                 })
@@ -33,7 +33,7 @@ app.service("userService", ["$http",
 
 		this.getAllCardsBySuraId = function(sura_id){
 			var promise = $http({method:'GET', url:'http://vocab-api.herokuapp.com/api/v1/users/'+
-				'cards_by_sura?sura_id='+sura_id+'&token=da34a57ce3e0582f56459a23bb8fe3d7'})
+				'cards_by_sura?sura_id='+sura_id+'&token='+token})
                 .success(function (response, status, headers, config) {
                     return response;
                 })
@@ -47,7 +47,7 @@ app.service("userService", ["$http",
 		this.getSurasReport = function(){
 
             var promise = $http({method:'GET', url:'http://vocab-api.herokuapp.com/api/v1/users/suras?' +
-                'token=da34a57ce3e0582f56459a23bb8fe3d7&sura_id=1'})
+                'token='+token+'&sura_id=1'})
                 .success(function (response, status, headers, config) {
                     return response;
                 })

@@ -21,18 +21,21 @@
 
                 <div class="space-6"></div>
 
-                <form>
+                <form name="frmLogin" ng-valid="frmLogin$valid" ng-submit="login(email, passwordLogIn)">
                     <fieldset>
                         <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input ng-model="email" type="text" class="form-control" placeholder="E-Mail" />
+															<input ng-model="email" type="email" class="form-control"
+                                                                   placeholder="E-Mail" required/>
 															<i class="ace-icon fa fa-user"></i>
 														</span>
                         </label>
 
                         <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Mot de passe" />
+															<input type="password" class="form-control"
+                                                                   placeholder="Mot de passe" ng-model="passwordLogIn"
+                                                                    required />
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
                         </label>
@@ -45,7 +48,7 @@
                                 <span class="lbl"> Se souvenir de moi</span>
                             </label>
 
-                            <button ng-click="login(email)" type="button" class="width-35 pull-right btn btn-sm btn-primary">
+                            <button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
                                 <i class="ace-icon fa fa-key"></i>
                                 <span class="bigger-110">Se connecter</span>
                             </button>
@@ -128,42 +131,30 @@
                 <div class="space-6"></div>
                 <p> Veuillez entrer vos informations: </p>
 
-                <form>
+                <form name="frmSignUp" ng-valid="frmSignUp$valid"
+                      ng-submit="register(emailSignUp, pseudo, password)">
                     <fieldset>
                         <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="Email" />
+															<input  type="email" class="form-control" ng-model="emailSignUp"
+                                                                   placeholder="Email" required />
 															<i class="ace-icon fa fa-envelope"></i>
 														</span>
                         </label>
 
                         <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control"
-                                                                   placeholder="E-Mail" />
+															<input type="text" class="form-control" ng-model="pseudo"
+                                                                   placeholder="Nom d'utilisateur" required/>
 															<i class="ace-icon fa fa-user"></i>
 														</span>
                         </label>
 
                         <label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Mot de passe" />
+															<input type="password" class="form-control"
+                                                                   placeholder="Mot de passe" ng-model="password" required/>
 															<i class="ace-icon fa fa-lock"></i>
-														</span>
-                        </label>
-
-                        <label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Mot de passe" />
-															<i class="ace-icon fa fa-retweet"></i>
-														</span>
-                        </label>
-
-                        <label class="block">
-                            <input type="checkbox" class="ace" />
-														<span class="lbl">
-															J'accepte
-															<a href="#">les conditions d'utilisations</a>
 														</span>
                         </label>
 
@@ -175,7 +166,8 @@
                                 <span class="bigger-110">Reset</span>
                             </button>
 
-                            <button type="button" class="width-65 pull-right btn btn-sm btn-success">
+                            <button type="submit" class="width-65 pull-right btn btn-sm btn-success"
+                                    ng-click="">
                                 <span class="bigger-110">S'enregistrer</span>
 
                                 <i class="ace-icon fa fa-arrow-right icon-on-right"></i>

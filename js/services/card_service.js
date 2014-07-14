@@ -3,9 +3,9 @@ app.service("cardService", ["$http",
 
 
 
-       this.getCard = function(card_id){
+       this.getCard = function(card_id, token){
            var promise = $http({method:'GET', url:'http://vocab-api.herokuapp.com/api/v1/cards/'+card_id+'?' +
-               'token=da34a57ce3e0582f56459a23bb8fe3d7'})
+               'token='+token})
                .success(function (response, status, headers, config) {
                    return response;
                })

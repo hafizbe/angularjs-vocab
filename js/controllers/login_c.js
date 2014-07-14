@@ -1,5 +1,5 @@
-app.controller('login_c', ['$scope','$rootScope','authenticationFactory','$cookieStore','$location',
-    function($scope, $rootScope, authenticationFactory, $cookieStore, $location) {
+app.controller('login_c', ['$scope','$rootScope','authenticationFactory','$cookieStore','$location','$route',
+    function($scope, $rootScope, authenticationFactory, $cookieStore, $location, $route) {
     $rootScope.hideLayout = function(){
         return true;
     };
@@ -18,18 +18,27 @@ app.controller('login_c', ['$scope','$rootScope','authenticationFactory','$cooki
     $scope.currentBox = 1;
 
     // Business Function
-    $scope.login = function(email){
-        authenticationFactory.authenticate(email, 'adel').then(function(promise){
-            console.log(promise.message)
+    $scope.login = function(email, passwordLogIn){
+        authenticationFactory.authenticate(email, passwordLogIn).then(function(promise){
             $cookieStore.put('token', promise.message)
-
+            $cookieStore.put('login', promise.login);
             $location.path("/");
-
-
+            $route.reload();
         });
     };
-    $scope.register = function(){
-
+    $scope.register = function(email, pseudo, password){
+        authenticationFactory.register(email, password, pseudo).then(function(promise) {
+            if(promise.success == true)
+            {
+                $cookieStore.put('token', promise.message)
+                $cookieStore.put('login', pseudo);
+                $location.path("/");
+            }
+            else
+            {
+                alert("Erreur lors de l'inscription");
+            }
+        });
     };
 
     // Displaying Function

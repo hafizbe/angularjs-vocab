@@ -1,10 +1,18 @@
 var app = angular.module('nomAppli', ['ngRoute','ngAnimate', 'ngCookies']);
-app.run(function($rootScope, $cookieStore, $location, $route, $window) {
+app.run(function($rootScope, $cookieStore, $location, $route, $window, authenticationFactory) {
     $rootScope.logOut = function() {
-        $cookieStore.remove("token");
+        $rootScope.removeInfosUser();
         $window.location.reload();
 
     };
+
+    $rootScope.removeInfosUser = function(){
+        $cookieStore.remove("token");
+        $cookieStore.remove("login");
+    }
+
+    $rootScope.login = $cookieStore.get("login");
+    console.log("Le login est :"+$cookieStore.get("login"))
 });
 /*app.config(['$httpProvider', function ($httpProvider) {
   //Reset headers to avoid OPTIONS request (aka preflight)

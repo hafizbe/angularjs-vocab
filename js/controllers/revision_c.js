@@ -1,6 +1,7 @@
 app.controller('revision_c', ['$scope','statisticFactory', '$routeParams','$route','$location','interrogationFactory',
-    'cardFactory','$rootScope',
-    function($scope, statisticFactory,$routeParams,$route, $location, interrogationFactory,cardFactory, $rootScope) {
+    'cardFactory','$rootScope','$cookieStore',
+    function($scope, statisticFactory,$routeParams,$route, $location, interrogationFactory,cardFactory, $rootScope,
+             $cookieStore) {
 
 
 
@@ -29,7 +30,7 @@ app.controller('revision_c', ['$scope','statisticFactory', '$routeParams','$rout
     }
 
     $scope.updateRevision = function(response, card_id){
-        interrogationFactory.updateInterrogation(card_id,response).then(function(promise){
+        interrogationFactory.updateInterrogation(card_id,response, $cookieStore.get('token')).then(function(promise){
             statisticFactory.deleteFirstCard();
             cardFactory.modifyStatistics(promise.statistics_sura,promise.sura_id, card_id, promise.response,
                 promise.date_response, promise.percentage_sura)

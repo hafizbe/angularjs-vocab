@@ -17,7 +17,6 @@ app.controller('home_c',['$scope','statisticFactory','$location','$rootScope','$
     //$cookieStore.put('token','adel');
 
 
-    console.log("Le token est :"+$cookieStore.get('token'));
     statisticFactory.getStatisticsHome($cookieStore.get('token')).then(function(promise){
         $scope.cardsToReviseCount = promise.cards_to_revise.length;
         $scope.percentageQuran = promise.percentage_total;

@@ -1,7 +1,7 @@
 app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route','$location','cardFactory',
-    'interrogationFactory','suraFactory','learningFactory','audioFactory','$rootScope',
+    'interrogationFactory','suraFactory','learningFactory','audioFactory','$rootScope','$cookieStore',
     function($scope, cardService, $routeParams,$route, $location, cardFactory, interrogationFactory,
-             suraFactory, learningFactory, audioFactory,$rootScope) {
+             suraFactory, learningFactory, audioFactory,$rootScope, $cookieStore) {
     $scope.cardsToWork = [];
     $scope.disableBtnBack = true;
     $scope.disableBtnNext = false;
@@ -57,7 +57,7 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
 
     $scope.createInterrogation = function(card_id, response)
     {
-        interrogationFactory.createInterrogation(card_id,response).then(function(promise){
+        interrogationFactory.createInterrogation(card_id,response, $cookieStore.get('token')).then(function(promise){
             cardFactory.modifyResponseCardAndDate(promise.sura_id, card_id, promise.response, promise.date_response);
             cardFactory.modifyPercentage(promise.percentage_sura, promise.sura_id);
             suraFactory.updateSurasReport(promise.statistics_sura, promise.sura_id)

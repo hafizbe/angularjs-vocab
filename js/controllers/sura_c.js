@@ -24,7 +24,7 @@ app.controller('sura_c', ['$scope','userService','suraFactory','$rootScope','$co
 
 	$scope.suras = [];
     $scope.limit = 20;
-	suraFactory.getSurasReport().then(function(promise){
+	suraFactory.getSurasReport($cookieStore.get('token')).then(function(promise){
 		$scope.suras = promise;
 	});
 
