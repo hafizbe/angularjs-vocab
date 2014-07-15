@@ -37,6 +37,10 @@ app.controller('home_c',['$scope','statisticFactory','$location','$rootScope','$
             $location.path("/user/revision/card/"+card.id);
     }
 
+    $scope.redirectToLearningNewWords = function(){
+        $location.path("/user/suras");
+    }
+
 
 
 }]);/**
