@@ -19,8 +19,12 @@
                 <div class="widget-header widget-header-flat widget-header-small">
                     <h5 class="widget-title">
                         <i class="ace-icon fa fa-signal"></i>
-                        Word in Arabic
+                        Mot en arabe
                     </h5>
+                    <div class="widget-toolbar">
+                        <span ng-show="!soundLoaded" class="badge badge-warning">Chargement du son</span>
+                        <span ng-click="replay()" ng-show="soundLoaded" class="badge badge-success badge-button">Clic pour rejouer</span>
+                    </div>
                 </div>
                 <div class="widget-body">
                     <div class="widget-main ">
@@ -35,7 +39,7 @@
                 <div class="widget-header widget-header-flat widget-header-small">
                     <h5 class="widget-title">
                         <i class="ace-icon fa fa-signal"></i>
-                        Word in English
+                        Mot en français
                     </h5>
                 </div>
                 <div class="widget-body">

@@ -62,6 +62,9 @@
 
 .top-buffer { margin-top:20px; }
 
+.badge-button:hover{
+    cursor: pointer;
+}
 
 .hide{
     display: none;

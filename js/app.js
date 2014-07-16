@@ -11,6 +11,16 @@ app.run(function($rootScope, $cookieStore, $location, $route, $window, authentic
         $cookieStore.remove("login");
     }
 
+    $rootScope.classLayout = function(){
+        return "no-skin";
+    };
+    $rootScope.pageContent = function(){
+        return "page-content";
+    };
+    $rootScope.hideLayout = function(){
+        return false;
+    };
+
     $rootScope.login = $cookieStore.get("login");
     console.log("Le login est :"+$cookieStore.get("login"))
 });
