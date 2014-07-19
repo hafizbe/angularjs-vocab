@@ -74,14 +74,16 @@ app.factory('learningFactory', function(cardFactory){
         clearCardsJustLearned : function(){
             factory.cardsJustLearned = [];
         },
-        getNbCardsToLearnInStep : function(sura_id){
+
+        // Indique le nombre de carte à réviser pour une étape
+        getNbCardsToLearnInStep : function(sura_id, nbCardsByStep){
             var nb = null;
             if(factory.cardsToLearn[sura_id] != undefined)
             {
-                if(factory.cardsToLearn[sura_id].length < 5)
+                if(factory.cardsToLearn[sura_id].length < nbCardsByStep)
                     nb = factory.cardsToLearn[sura_id].length;
                 else
-                    nb = 5;
+                    nb = nbCardsByStep;
             }
             return nb;
         },

@@ -19,7 +19,7 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
     $scope.sura_id = $routeParams.sura_id;
     $scope.fiveCardsToLearn = null;
     $scope.cardsJustLearned = learningFactory.cardsJustLearned;
-    $scope.learningStepsStatistics = learningFactory.getLearningStepStatistic(learningFactory.getNbCardsToLearnInStep($routeParams.sura_id));
+    $scope.learningStepsStatistics = learningFactory.getLearningStepStatistic(learningFactory.getNbCardsToLearnInStep($routeParams.sura_id, 2));
 
     cardFactory.getCardBySuraIdAndCardId($routeParams.sura_id, $routeParams.card_id).then(function(promise){
         $scope.word_arabic = promise.word;
@@ -40,7 +40,7 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
         if(learningFactory.modeLearningSura)
         {
             $scope.fiveCardsToLearn = learningFactory.getCardsToLearnStep(
-                learningFactory.getNbCardsToLearnInStep($routeParams.sura_id),promise.sura_id);
+                learningFactory.getNbCardsToLearnInStep($routeParams.sura_id, 2),promise.sura_id);
 
             console.log($scope.fiveCardsToLearn);
 
@@ -197,6 +197,7 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
     };
 
     $scope.nextStep = function(){
+
         $scope.step++;
         $scope.response = false;
     };
@@ -228,7 +229,11 @@ app.controller('learning_card_c', ['$scope','cardService','$routeParams','$route
         {
             return "fa fa-check-square-o green";
         }
-    };
+    }
+
+    $scope.nextCard = function(){
+        alert("ok");
+    }
 
     $scope.$watch('step',function(step){
         if(step == 1)
